@@ -1,2 +1,2 @@
-# cozystack-website
-Cozystack.io website
+# katamarina-website
+katamarina.ru website

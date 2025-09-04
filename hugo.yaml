@@ -4,7 +4,7 @@ enableRobotsTXT: true
 enableEmoji: true
 
 # Language configuration
-defaultContentLanguage: en
+defaultContentLanguage: ru
 defaultContentLanguageInSubdir: false
 enableMissingTranslationPlaceholders: true
 

@@ -1,5 +1,5 @@
 baseURL: /
-title: Cozystack
+title: Katamarina
 enableRobotsTXT: true
 enableEmoji: true
 
@@ -70,10 +70,10 @@ markup:
     autoHeadingIDType: github
 
 languages:
-  en:
+  ru:
     params:
-      languageName: English
-      languageCode: en
+      languageName: Russian
+      languageCode: ru
       time_format_default: 2006-01-02
       time_format_blog: 2006-01-02
 
@@ -138,47 +138,29 @@ params:
   links:
     # End user relevant links. These will show up on left side of footer and in the community page if you have one.
     user:
-      - name: Twitter
-        url: https://twitter.com/aenix_io
-        icon: fab fa-twitter
-        desc: Follow us on Twitter to get the latest news!
-      - name: LinkedIn
-        url: https://www.linkedin.com/company/aenix-io
-        icon: fab fa-linkedin
-        desc: Join the Flux Community group on LinkedIn!
-      - name: RSS Feed
-        url: /blog/index.xml
-        icon: fa fa-rss
-        desc: Subscribe to the RSS feed of our blog!
       - name: Support
-        url: https://aenix.io/contact-us/
+        url: https://xsystech.ru/contacts/
         icon: fas fa-comments
         desc: Get enterprise-grade support.
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
       - name: Cozystack project on GitHub
-        url: https://github.com/aenix-io/cozystack
+        url: https://github.com/katamarina-ru
         icon: fab fa-github
         desc: Development takes place here!
-      - name: Slack
-        url: https://kubernetes.slack.com/messages/cozystack
-        icon: fab fa-slack
-        desc: Chat with other project developers
       - name: Telegram
-        url: https://t.me/cozystack/
+        url: https://t.me/cozystack_ru
         icon: fab fa-telegram
         desc: Chat with other project developers
 
 
 menus:
   main:
-  - name: Ænix
-    url: https://aenix.io
+  - name: XSYSTECH
+    url: https://xsystech.ru
     weight: 5
   - name: GitHub
-    url: https://github.com/aenix-io/cozystack
+    url: https://github.com/katamarina-ru
     weight: 10
 
 services:
-  googleAnalytics:
-    ID: G-7EH3PFQ5QR

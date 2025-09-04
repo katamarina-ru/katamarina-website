@@ -91,11 +91,10 @@ outputs:
 
 params:
   description: Free and Open Source PaaS-platform for seamless management of virtual machines, managed Kubernetes, and Databases-as-a-Service
-  copyright: Ænix,
-  github_repo: https://github.com/aenix-io/cozystack-website
+  copyright: XSYSTECH,
+  github_repo: https://github.com/katamarina-ru/katamarina-website
   github_branch: master
-  github_project_repo: https://github.com/aenix-io/cozystack
-  slack: https://cloud-native.slack.com/messages/cozystack
+  github_project_repo: https://github.com/katamarina-ru/
   support: /support
   images: [img/cozystack-social.png]
   # Enable Algolia DocSearch
@@ -105,7 +104,7 @@ params:
   version: "0.1"
   archived_version: false
   version_menu_pagelinks: true
-  url_latest_version: https://cozystack.io/docs
+  url_latest_version: https://katamarina.ru
   #versions:
   #  - version: "v2.2"
   #    url: https://fluxcd.io
@@ -162,5 +161,3 @@ menus:
   - name: GitHub
     url: https://github.com/katamarina-ru
     weight: 10
-
-services:

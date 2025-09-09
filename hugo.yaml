@@ -94,7 +94,7 @@ params:
   copyright: XSYSTECH,
   github_repo: https://github.com/katamarina-ru/katamarina-website
   github_branch: master
-  github_project_repo: https://github.com/katamarina-ru/
+  github_project_repo: https://gitflic.ru/company/katamarina/
   support: /support
   images: [img/cozystack-social.png]
   # Enable Algolia DocSearch
@@ -158,6 +158,6 @@ menus:
   - name: XSYSTECH
     url: https://xsystech.ru
     weight: 5
-  - name: GitHub
-    url: https://github.com/katamarina-ru
+  - name: GitFlic
+    url: https://gitflic.ru/company/katamarina
     weight: 10

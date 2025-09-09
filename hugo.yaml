@@ -143,8 +143,8 @@ params:
         desc: Get enterprise-grade support.
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
-      - name: Cozystack project on GitHub
-        url: https://github.com/katamarina-ru
+      - name: Katamarina project on GitFlic
+        url: https://gitflic.ru/company/katamarina
         icon: fab fa-github
         desc: Development takes place here!
       - name: Telegram

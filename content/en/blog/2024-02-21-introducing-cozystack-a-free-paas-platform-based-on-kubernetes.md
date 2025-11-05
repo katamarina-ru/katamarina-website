@@ -1,12 +1,12 @@
 ---
 layout: blog
-title: "Introducing Cozystack: A Free PaaS Platform based on Kubernetes"
-slug: first-release-of-cozystack
-slug: introducing-cozystack-a-free-paas-platform-based-on-kubernetes
-date: 2024-02-21
+title: "Платформа Katamarina"
+slug: introducing-katamarina
+slug: introducing-katamarina
+date: 2025-09-21
 ---
 
-**Author**: Andrei Kvapil (Ænix)
+**Author**: Ivan (Xsystech)
 
 [Published](https://github.com/aenix-io/cozystack/releases/tag/v0.1.0) the first release of the free PaaS platform [Cozystack](https://github.com/aenix-io/cozystack/releases/tag/v0.1.0), based on Kubernetes.
 The project positioned as a ready-to-use platform for hosting providers and a framework for building private and public clouds. The code is [available](https://github.com/aenix-io/cozystack) on GitHub and is distributed under the Apache-2.0 license.

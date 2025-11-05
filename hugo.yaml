@@ -155,9 +155,6 @@ params:
 
 menus:
   main:
-  - name: XSYSTECH
-    url: https://xsystech.ru
-    weight: 5
   - name: GitFlic
     url: https://gitflic.ru/company/katamarina
     weight: 10

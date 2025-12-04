@@ -1,6 +1,6 @@
 ---
-title: "Use Cases"
-linkTitle: "Use Cases"
-description: "Cozystack use cases."
+title: "Техническая поддержка"
+linkTitle: "Техническая поддержка"
+description: "Техническая поддержка Katamarina"
 weight: 20
 ---

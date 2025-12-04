@@ -16,7 +16,6 @@
           <!-- hugeTable pages disable right sidebar: https://github.com/fluxcd/website/pull/281 -->
           {{ if not .Params.hugeTable }}
           <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
-            {{ partial "page-meta-links.html" . }}
             {{ partial "toc.html" . }}
 <!--
     Disabling because of https://github.com/google/docsy/issues/38

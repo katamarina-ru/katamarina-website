@@ -9,7 +9,7 @@ defaultContentLanguageInSubdir: false
 enableMissingTranslationPlaceholders: true
 
 # Provide .LastMod values
-enableGitInfo: true
+enableGitInfo: false
 
 module:
   proxy: direct

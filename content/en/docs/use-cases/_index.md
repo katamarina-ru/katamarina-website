@@ -2,5 +2,5 @@
 title: "Техническая поддержка"
 linkTitle: "Техническая поддержка"
 description: "Техническая поддержка Katamarina"
-weight: 20
+weight: 200
 ---

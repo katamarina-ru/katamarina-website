@@ -1,7 +1,7 @@
 ---
 title: "Документация Katamarina"
 linkTitle: "Документация"
-description: "Free PaaS platform and framework for building clouds"
+description: "PaaS платформа для построения облачных инфраструктур"
 taxonomyCloud: []
 cascade:
   type: docs
@@ -10,8 +10,8 @@ menu:
     weight: 40
 ---
 
-Katamarina is a free PaaS platform and framework for building clouds
+Katamarina является PaaS-платформой для построения облачных инфраструктур.
 
-With Katamarina, you can transform your bunch of servers into an intelligent system with a simple REST API for spawning Kubernetes clusters, Database-as-a-Service, virtual machines, load balancers, HTTP caching services, and other services with ease.
+Katamarina позволяет легко трансформировать ваш парк серверов в интеллектуальную систему с помощью простого REST API для развертывания Kubernetes кластеров, виртуализации и контейнеризации, сервисов баз данных (DBaaS), виртуальных машин, балансировщиков нагрузки, HTTP-кэширования и других сервисов.
 
-You can use Katamarina to build your own cloud or to provide a cost-effective development environments.  
+Используйте Katamarina для создания собственного облака как для продуктивной нагрузки, так и для предоставления недорогих сред разработки.

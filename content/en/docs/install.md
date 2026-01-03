@@ -39,7 +39,7 @@ weight: 41
 
 Загрузить ISO-образ по ссылке:
 
-[https://files.katamarina.ru/download](https://files.katamarina.ru/download)
+[http://files.katamarina.ru/download](http://files.katamarina.ru/download)
 
 1. Подключить ISO-образ к виртуальной машине (или через виртуальный CD-ROM к серверу).
 

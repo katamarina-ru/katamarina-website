@@ -5,11 +5,9 @@ description: "Руководство Админстратора платформ
 weight: 42
 ---
 
-# Administration & Troubleshooting
+## Administration & Troubleshooting
 
 > Troubleshoot control plane and other failures for Talos Linux clusters.
-
-export const k8s_release = '1.35.0';
 
 In this guide we assume that Talos is configured with default features enabled, such as [Discovery Service](../configure-your-talos-cluster/system-configuration/discovery) and [KubePrism](../../../kubernetes-guides/advanced-guides/kubeprism).
 If these features are disabled, some of the troubleshooting steps may not apply or may need to be adjusted.

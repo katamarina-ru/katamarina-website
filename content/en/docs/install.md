@@ -6,3 +6,136 @@ weight: 41
 ---
 
 ### Требования к минимальной конфигурации:
+
+
+#### Управляющий узел (виртуальная машина с Linux) - как минимум 1 шт.:
+
+* Любая Linux-подобная ОС, включая российские (РЕД ОС, Альт, Астра Линукс)
+
+* Наличие 500 МБ свободного места на диске.
+
+* Наличие установленной и работоспособной утилиты kubectl версии 1.33 и выше.
+
+* Для установки kubectl можно использовать руководство: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+#### Вычислительный узел (пустая виртуальная машина или физический сервер без установленной операционной системы):
+
+* Архитектура: x86_64
+
+* vCPU/CPU:  4 ядра
+
+* vRAM/RAM:  16 GB
+
+* Основной диск: чистый диск, размер от 20ГБ (в формате RAW/IDE для виртуальной машины)
+
+* Дополнительный диск (опционально): чистый диск, размер от 200ГБ (в формате RAW/IDE для виртуальной машины)
+
+* Сеть: IPv4, **обязательно автоматическое получение адреса по DHCP при загрузке**
+
+
+
+
+### Подготовительные действия для вычислительного узла (выполняются в системе управления виртуальными машинами или management-консоли сервера):
+
+Загрузить ISO-образ по ссылке:
+
+[https://files.katamarina.ru/download](https://files.katamarina.ru/download)
+
+1. Подключить ISO-образ к виртуальной машине (или через виртуальный CD-ROM к серверу).
+
+   <img width="1022" height="362" alt="image_2025-12-16_11-44-32" src="https://github.com/user-attachments/assets/c43fbaa7-c557-4663-84f6-b2ea7c68e677" />
+
+3. Выставить порядок загрузки устройств, чтобы он начинался с ISO/CD-ROM.
+4. Включить виртуальную машину/сервер.
+5. Дождаться загрузки с ISO-образа.
+
+Корректно загруженная система должна выглядеть следующим образом:
+
+<img width="798" height="556" alt="image_2025-12-16_12-26-17" src="https://github.com/user-attachments/assets/6cb336c5-b25f-40c9-8848-ab30a5d10d2b" />
+
+Убедиться, что в верхней панели статуса присутствует поле KATAMARINA v1.11*, в поле STAGE отображается статус "Maintenance". 
+
+Запомнить управляющий IP-адрес вычислительного.
+
+В случае отличий - произвести полную очистку основного диска (или пересоздать новый в случае ВМ и перезагрузить систему с ISO-образа заново).
+
+### Первоначальное развертывание кластера, выполняется на управляющем узле:
+
+Установка выполняется из под пользователя с правами администратора/root.
+
+**1. Установить управляющую утилиту:**
+```
+curl -sL http://files.katamarina.ru/scripts/install |sh
+```
+
+**2. Проверить корректность установки (вывод должен совпадать):**
+   
+```
+talosctl
+```
+Пример корректного вывода команды:
+```
+A CLI for out-of-band management of Kubernetes nodes created by Talos
+
+Usage:
+  talosctl [command]
+
+Available Commands:
+  apply-config        Apply a new configuration to a node
+root@demo:~# 
+```
+
+**3. Установить управляющий адрес вычислительного узла (был присвоен в предыдущем шаге):**
+```   
+export TALOS_CONTROL_PLANE_IP=192.168.122.34
+```
+
+**4. Сгенерировать конфигурацию кластера:**
+```
+talosctl gen config katamarina-demo https://$TALOS_CONTROL_PLANE_IP:6443
+```
+Пример корректного вывода команды:
+```
+generating PKI and tokens
+Created /root/controlplane.yaml
+Created /root/worker.yaml
+Created /root/talosconfig
+root@demo:~#
+```
+
+**5. Применить конфигурацию управляющего узла:**
+
+```
+talosctl apply-config --insecure -n $TALOS_CONTROL_PLANE_IP --file ./controlplane.yaml
+```
+
+**6. Управляющий узел будет автоматически перезагружен, дождаться перезагрузки.**
+
+После пререзагрузки экран управляющего узла должен выглядеть следующим образом:
+
+<img width="797" height="637" alt="image_2025-12-16_12-09-57" src="https://github.com/user-attachments/assets/c4f55c05-421e-4674-876e-1f9bd07b3cc8" />
+
+
+**7. Инициализировать базовую конфигурацию кластера:**
+```
+talosctl bootstrap --nodes $TALOS_CONTROL_PLANE_IP --endpoints $TALOS_CONTROL_PLANE_IP --talosconfig=./talosconfig
+```
+
+**8. Сформировать кластер:**
+```
+talosctl kubeconfig kubeconf --nodes $TALOS_CONTROL_PLANE_IP --endpoints $TALOS_CONTROL_PLANE_IP --talosconfig ./talosconfig
+```
+
+**9. Проверить, что управляющий кластер был сформирован.**
+
+```
+./kubectl --kubeconfig ./kubeconf get nodes
+```
+Пример корректного вывода команды:
+```
+NAME            STATUS     ROLES           AGE   VERSION
+talos-xxq-hug   NotReady   control-plane   21s   v1.34.1
+root@demo:~#
+```
+
+10. Базовая установка завершена, для дальнейшего конфигурирования используйте Руководство Администратора.

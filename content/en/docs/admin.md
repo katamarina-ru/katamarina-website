@@ -178,7 +178,7 @@ associated node.
 
 The state of any CSRs can be checked with `kubectl get csr`:
 
-```bash  theme={null}
+```
 $ kubectl get csr
 NAME        AGE   SIGNERNAME                                    REQUESTOR                 CONDITION
 csr-jcn9j   14m   kubernetes.io/kube-apiserver-client-kubelet   system:bootstrap:q9pyzr   Approved,Issued
@@ -209,7 +209,7 @@ Usually, CNI-related resources are created in `kube-system` namespace.
 
 For example, for the default Talos Flannel CNI:
 
-```bash  theme={null}
+```
 $ kubectl -n kube-system get pods
 NAME                                             READY   STATUS    RESTARTS   AGE
 ...
@@ -231,7 +231,7 @@ This error might appear during initial cluster bootstrap, and it will go away on
 
 The example of Talos logs:
 
-```bash  theme={null}
+```
 [talos] controller failed {"component": "controller-runtime", "controller": "k8s.KubeletStaticPodController", "error": "error refreshing pod status: error fetching pod status: Get \"https://127.0.0.1:10250/pods/?timeout=30s\": remote error: tls: internal error"}
 ```
 
@@ -265,7 +265,7 @@ The `kube-controller-manager` and `kube-scheduler` are configured to talk to the
 Talos should generate the static pod definitions for the Kubernetes control plane
 as resources:
 
-```bash  theme={null}
+```
 $ talosctl -n <IP> get staticpods
 NODE         NAMESPACE   TYPE        ID                        VERSION
 172.20.0.2   k8s         StaticPod   kube-apiserver            1
@@ -275,7 +275,7 @@ NODE         NAMESPACE   TYPE        ID                        VERSION
 
 Talos should report that the static pod definitions are rendered for the `kubelet`:
 
-```bash  theme={null}
+```
 $ talosctl -n <IP> dmesg | grep 'rendered new'
 172.20.0.2: user: warning: [2023-04-26T19:17:52.550527204Z]: [talos] rendered new static pod {"component": "controller-runtime", "controller": "k8s.StaticPodServerController", "id": "kube-apiserver"}
 172.20.0.2: user: warning: [2023-04-26T19:17:52.552186204Z]: [talos] rendered new static pod {"component": "controller-runtime", "controller": "k8s.StaticPodServerController", "id": "kube-controller-manager"}
@@ -303,7 +303,7 @@ The status of the control plane components on each of the control plane nodes ca
 
 The logs of the control plane components can be checked with `talosctl logs --kubernetes` (or with `-k` as a shorthand):
 
-```bash  theme={null}
+```
 talosctl -n <IP> logs -k kube-system/kube-apiserver-talos-default-controlplane-1:kube-apiserver:51c3aad7a271
 ```
 
@@ -317,7 +317,7 @@ If the control plane component reports error on startup, check that:
 As part of the bootstrap process, Talos injects bootstrap manifests into Kubernetes API server.
 There are two kinds of these manifests: system manifests built-in into Talos and extra manifests downloaded (custom CNI, extra manifests in the machine config):
 
-```bash  theme={null}
+```
 $ talosctl -n <IP> get manifests
 NODE         NAMESPACE      TYPE       ID                               VERSION
 172.20.0.2   controlplane   Manifest   00-kubelet-bootstrapping-token   1
@@ -335,7 +335,7 @@ NODE         NAMESPACE      TYPE       ID                               VERSION
 
 Details of each manifest can be queried by adding `-o yaml`:
 
-```bash  theme={null}
+```
 $ talosctl -n <IP> get manifests 01-csr-approver-role-binding --namespace=controlplane -o yaml
 node: 172.20.0.2
 metadata:
@@ -427,7 +427,7 @@ Talos runs a set of [controllers](../learn-more/controllers-resources) which ope
 
 Some debugging information can be queried from the controller logs with `talosctl logs controller-runtime`:
 
-```bash  theme={null}
+```
 talosctl -n <IP> logs controller-runtime
 ```
 

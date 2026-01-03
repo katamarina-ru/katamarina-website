@@ -9,7 +9,7 @@ weight: 42
 
 > Устранение неполадок в Control Plane и других сбоев в кластерах Talos Linux.
 
-В этом руководстве мы предполагаем, что Talos настроен с включенными по умолчанию функциями, такими как [Служба обнаружения](https://docs.siderolabs.com/talos/v1.11/configure-your-talos-cluster/system-configuration/discovery) и [KubePrism](https://docs.siderolabs.com/talos/v1.11/kubernetes-guides/advanced-guides/kubeprism).
+В этом руководстве мы предполагаем, что Talos настроен с включенными по умолчанию функциями, такими как [Служба обнаружения](https://docs.siderolabs.com/talos/v1.11/configure-your-talos-cluster/system-configuration/discovery) и [KubePrism](https://docs.siderolabs.com/kubernetes-guides/advanced-guides/kubeprism).
 Если эти функции отключены, некоторые из шагов по устранению неполадок могут быть неприменимы или потребовать корректировки.
 
 Данное руководство построено таким образом, что его можно выполнять шаг за шагом; пропускайте разделы, не относящиеся к вашей проблеме.

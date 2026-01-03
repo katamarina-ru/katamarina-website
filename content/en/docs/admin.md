@@ -5,7 +5,7 @@ description: "Руководство Админстратора платформ
 weight: 42
 ---
 
-# Troubleshooting
+# Administration & Troubleshooting
 
 > Troubleshoot control plane and other failures for Talos Linux clusters.
 

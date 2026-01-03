@@ -5,263 +5,263 @@ description: "Руководство Админстратора платформ
 weight: 42
 ---
 
-## Administration & Troubleshooting
+## Администрирование и устранение неполадок
 
-> Troubleshoot control plane and other failures for Talos Linux clusters.
+> Устранение неполадок в Control Plane и других сбоев в кластерах Talos Linux.
 
-In this guide we assume that Talos is configured with default features enabled, such as [Discovery Service](../configure-your-talos-cluster/system-configuration/discovery) and [KubePrism](../../../kubernetes-guides/advanced-guides/kubeprism).
-If these features are disabled, some of the troubleshooting steps may not apply or may need to be adjusted.
+В этом руководстве мы предполагаем, что Talos настроен с включенными по умолчанию функциями, такими как [Служба обнаружения](https://docs.siderolabs.com/talos/v1.11/configure-your-talos-cluster/system-configuration/discovery) и [KubePrism](https://docs.siderolabs.com/talos/v1.11/kubernetes-guides/advanced-guides/kubeprism).
+Если эти функции отключены, некоторые из шагов по устранению неполадок могут быть неприменимы или потребовать корректировки.
 
-This guide is structured so that it can be followed step-by-step, skip sections which are not relevant to your issue.
+Данное руководство построено таким образом, что его можно выполнять шаг за шагом; пропускайте разделы, не относящиеся к вашей проблеме.
 
-## Network Configuration
+## Настройка сети
 
-As Talos Linux is an API-based operating system, it is important to have networking configured so that the API can be accessed.
-Some information can be gathered from the [Interactive Dashboard](../deploy-and-manage-workloads/interactive-dashboard) which is available on the machine console.
+Поскольку Talos Linux — это операционная система, основанная на API, важно настроить сеть таким образом, чтобы обеспечить доступ к API.
+Некоторую информацию можно получить с помощью [интерактивной панели мониторинга](https://docs.siderolabs.com/talos/v1.11/deploy-and-manage-workloads/interactive-dashboard), доступной на консоли машины.
 
-When running in the cloud the networking should be configured automatically.
-Whereas when running on bare-metal it may need more specific configuration, see [networking `metal` configuration guide](../platform-specific-installations/bare-metal-platforms/network-config).
+При работе в облаке сетевые настройки должны выполняться автоматически.
+В то время как при работе на физическом оборудовании может потребоваться более специфичная конфигурация, см. [руководство по настройке сети на физическом оборудовании](https://docs.siderolabs.com/talos/v1.11/platform-specific-installations/bare-metal-platforms/network-config).
 
-## Talos API
+## API Talos
 
-The Talos API runs on [port 50000](../learn-more/talos-network-connectivity).
-Control plane nodes should always serve the Talos API, while worker nodes require access to the control plane nodes to issue TLS certificates for the workers.
+API Talos работает на порту 50000 (../learn-more/talos-network-connectivity).
+Узлы Control Plane всегда должны предоставлять доступ к API Talos, в то время как рабочие узлы нуждаются в доступе к узлам Control Plane для выдачи TLS-сертификатов для рабочих узлов.
 
-### Firewall Issues
+### Проблемы с брандмауэром
 
-Make sure that the firewall is not blocking port 50000, and [communication](../learn-more/talos-network-connectivity) on ports 50000/50001 inside the cluster.
+Убедитесь, что брандмауэр не блокирует порт 50000 и [коммуникацию](https://docs.siderolabs.com/talos/v1.11/learn-more/talos-network-connectivity) на портах 50000/50001 внутри кластера.
 
-### Client Configuration Issues
+### Проблемы с конфигурацией клиента
 
-Make sure to use correct `talosconfig` client configuration file matching your cluster.
-See [getting started](../getting-started/getting-started) for more information.
+Убедитесь, что используете правильный файл конфигурации клиента `talosconfig`, соответствующий вашему кластеру.
+Дополнительную информацию см. в разделе [начало работы](https://docs.siderolabs.com/talos/v1.11/getting-started/getting-started).
 
-The most common issue is that `talosctl gen config` writes `talosconfig` to the file in the current directory, while `talosctl` by default picks up the configuration from the default location (`~/.talos/config`).
-The path to the configuration file can be specified with `--talosconfig` flag to `talosctl`.
+Наиболее распространенная проблема заключается в том, что команда `talosctl gen config` записывает `talosconfig` в файл в текущем каталоге, в то время как `talosctl` по умолчанию берет конфигурацию из стандартного расположения (`~/.talos/config`).
+Путь к файлу конфигурации можно указать с помощью флага `--talosconfig` в команде `talosctl`.
 
-### Conflict on Kubernetes and Host Subnets
+### Конфликт в Kubernetes и подсетях хоста
 
-If `talosctl` returns an error saying that certificate IPs are empty, it might be due to a conflict between Kubernetes and host subnets.
-The Talos API runs on the host network, but it automatically excludes Kubernetes pod & network subnets from the useable set of addresses.
+Если `talosctl` возвращает ошибку, указывающую на то, что IP-адреса сертификатов пусты, это может быть связано с конфликтом между Kubernetes и подсетями хоста.
+API Talos работает в хост-сети, но автоматически исключает подсети и сети Kubernetes из набора доступных адресов.
 
-Talos default machine configuration specifies the following Kubernetes pod and service IPv4 CIDRs: `10.244.0.0/16` and `10.96.0.0/12`.
-If the host network is configured with one of these subnets, change the machine configuration to use a different subnet.
+В конфигурации машины Talos по умолчанию указаны следующие IPv4 CIDR для подов и сервисов Kubernetes: `10.244.0.0/16` и `10.96.0.0/12`.
+Если в хост-сети используется одна из этих подсетей, измените конфигурацию машины, чтобы использовать другую подсеть.
 
-### Wrong Endpoints
+### Неверные конечные точки
 
-The `talosctl` CLI connects to the Talos API via the specified endpoints, which should be a list of control plane machine addresses.
-The client will automatically retry on other endpoints if there are unavailable endpoints.
+Интерфейс командной строки `talosctl` подключается к API Talos через указанные конечные точки, которые должны представлять собой список адресов машин Control Plane.
+В случае недоступности каких-либо конечных точек клиент автоматически повторит попытку подключения к другим точкам доступа.
 
-Worker nodes should not be used as the endpoint, as they are not able to forward request to other nodes.
+Рабочие узлы не следует использовать в качестве конечной точки, поскольку они не могут перенаправлять запросы на другие узлы.
 
-The [VIP](../networking/vip) should never be used as Talos API endpoint.
+Адрес [VIP](https://docs.siderolabs.com/talos/v1.11/networking/vip) ни в коем случае нельзя использовать в качестве конечной точки API Talos.
 
-### TCP Loadbalancer
+### TCP-балансировщик нагрузки
 
-When using a TCP loadbalancer, make sure the loadbalancer endpoint is included in the `.machine.certSANs` list in the machine configuration.
+При использовании балансировщика нагрузки TCP убедитесь, что конечная точка балансировщика нагрузки включена в список `.machine.certSANs` в конфигурации машины.
 
-## System Requirements
+## Системные требования
 
-If minimum [system requirements](../getting-started/system-requirements) are not met, this might manifest itself in various ways, such as random failures when starting services, or failures to pull images from the container registry.
+Если минимальные [системные требования](https://docs.siderolabs.com/talos/v1.11/getting-started/system-requirements) не соблюдены, это может проявляться различными способами, например, в виде случайных сбоев при запуске служб или сбоев при загрузке образов из реестра контейнеров.
 
-## Running Health Checks
+## Проведение проверок состояния здоровья
 
-Talos Linux provides a set of basic health checks with `talosctl health` command which can be used to check the health of the cluster.
+Talos Linux предоставляет набор базовых проверок работоспособности с помощью команды `talosctl health`, которую можно использовать для проверки состояния кластера.
 
-In the default mode, `talosctl health` uses information from the [discovery](../configure-your-talos-cluster/system-configuration/discovery) to get the information about cluster members.
-This can be overridden with command line flags `--control-plane-nodes` and `--worker-nodes`.
+В режиме по умолчанию команда `talosctl health` использует информацию из [discovery](https://docs.siderolabs.com/talos/v1.11/configure-your-talos-cluster/system-configuration/discovery) для получения сведений о членах кластера.
+Это можно переопределить с помощью флагов командной строки `--control-plane-nodes` и `--worker-nodes`.
 
-## Gathering Logs
+## Журналы сбора
 
-While the logs and state of the system can be queried via the Talos API, it is often useful to gather the logs from all nodes in the cluster, and analyze them offline.
-The `talosctl support` command can be used to gather logs and other information from the nodes specified with `--nodes` flag (multiple nodes are supported).
+Хотя журналы и состояние системы можно запросить через API Talos, часто бывает полезно собрать журналы со всех узлов кластера и проанализировать их в автономном режиме.
+Команда `talosctl support` позволяет собирать журналы и другую информацию с узлов, указанных с помощью флага `--nodes` (поддерживается несколько узлов).
 
-## Discovery and Cluster Membership
+## Обнаружение и членство в кластере
 
-Talos Linux uses [Discovery Service](../configure-your-talos-cluster/system-configuration/discovery) to discover other nodes in the cluster.
+Talos Linux использует [службу обнаружения](https://docs.siderolabs.com/talos/v1.11/configure-your-talos-cluster/system-configuration/discovery) для обнаружения других узлов в кластере.
 
-The list of members on each machine should be consistent: `talosctl -n <IP> get members`.
+Список участников на каждой машине должен быть согласованным: `talosctl -n <IP> get members`.
 
-### Some Members are Missing
+### Некоторые участники отсутствуют
 
-Ensure connectivity to the discovery service (default is `discovery.talos.dev:443`), and that the discovery registry is not disabled.
+Убедитесь в наличии подключения к службе обнаружения (по умолчанию `discovery.talos.dev:443`) и в том, что реестр обнаружения не отключен.
 
-### Duplicate Members
+### Дублирующиеся участники
 
-Don't use same base secrets to generate machine configuration for multiple clusters, as some secrets are used to identify members of the same cluster.
-So if the same machine configuration (or secrets) are used to repeatedly create and destroy clusters, the discovery service will see the same nodes as members of different clusters.
+Не используйте одни и те же базовые секреты для генерации конфигурации машин для нескольких кластеров, поскольку некоторые секреты используются для идентификации членов одного и того же кластера.
+Таким образом, если одна и та же конфигурация машины (или секреты) используется для многократного создания и уничтожения кластеров, служба обнаружения будет видеть одни и те же узлы как членов разных кластеров.
 
-### Removed Members are Still Present
+### Удаленные участники все еще присутствуют
 
-Talos Linux removes itself from the discovery service when it is [reset](../configure-your-talos-cluster/lifecycle-management/resetting-a-machine).
-If the machine was not reset, it might show up as a member of the cluster for the maximum TTL of the discovery service (30 minutes), and after that it will be automatically removed.
+Talos Linux удаляет себя из службы обнаружения при [перезагрузке](https://docs.siderolabs.com/talos/v1.11/configure-your-talos-cluster/lifecycle-management/resetting-a-machine).
+Если устройство не было перезагружено, оно может отображаться как участник кластера в течение максимального времени жизни службы обнаружения (30 минут), после чего будет автоматически удалено.
 
-## `etcd` Issues
+## Проблемы с `etcd`
 
-`etcd` is the distributed key-value store used by Kubernetes to store its state.
-Talos Linux provides automation to manage `etcd` members running on control plane nodes.
-If `etcd` is not healthy, the Kubernetes API server will not be able to function correctly.
+`etcd` — это распределенное хранилище типа «ключ-значение», используемое Kubernetes для хранения своего состояния.
+Talos Linux предоставляет средства автоматизации для управления компонентами `etcd`, работающими на узлах Control Plane.
+Если `etcd` неисправен, сервер API Kubernetes не сможет корректно функционировать.
 
-It is always recommended to run an odd number of `etcd` members, as with 3 or more members it provides fault tolerance for less than quorum member failures.
+Всегда рекомендуется запускать нечетное количество участников `etcd`, поскольку при наличии 3 или более участников обеспечивается отказоустойчивость в случае сбоев меньшего количества участников, чем необходимо для достижения кворума.
 
-Common troubleshooting steps:
+Типичные шаги по устранению неполадок:
 
-* check `etcd` service state with `talosctl -n IP service etcd` for each control plane node
-* check `etcd` membership on each control plane node with `talosctl -n IP etcd members`
-* check `etcd` logs with `talosctl -n IP logs etcd`
-* check `etcd` alarms with `talosctl -n IP etcd alarm list`
+* Проверьте состояние службы `etcd` с помощью команды `talosctl -n IP service etcd` для каждого узла Control Plane.
+* Проверьте принадлежность `etcd` к каждому узлу Control Plane с помощью команды `talosctl -n IP etcd members`.
+* Проверьте логи `etcd` с помощью команды `talosctl -n IP logs etcd`
+* Проверьте наличие оповещений `etcd` с помощью команды `talosctl -n IP etcd alarm list`
 
-### All `etcd` Services are Stuck in `Pre` State
+### Все службы `etcd` застряли в состоянии `Pre`
 
-Make sure that a single member was [bootstrapped](../getting-started/getting-started#kubernetes-bootstrap).
+Убедитесь, что хотя бы один участник был [запущен](https://docs.siderolabs.com/talos/v1.11/getting-started/getting-started#kubernetes-bootstrap).
 
-Check that the machine is able to pull the `etcd` container image, check `talosctl dmesg` for messages starting with `retrying:` prefix.
+Убедитесь, что машина может загрузить образ контейнера `etcd`, проверьте `talosctl dmesg` на наличие сообщений, начинающихся с префикса `retrying:`.
 
-### Some `etcd` Services are Stuck in `Pre` State
+### Некоторые службы `etcd` застряли в состоянии `Pre`
 
-Make sure traffic is not blocked on port 2380 between controlplane nodes.
+Убедитесь, что трафик на порту 2380 между узлами Control Plane не заблокирован.
 
-Check that `etcd` quorum is not lost.
+Убедитесь, что кворум `etcd` не потерян.
 
-Check that all control plane nodes are reported in `talosctl get members` output.
+Убедитесь, что все узлы Control Plane отображаются в выводе команды `talosctl get members`.
 
-### `etcd` Reports and Alarm
+### Отчеты и оповещения `etcd`
 
-See [etcd maintenance](../build-and-extend-talos/cluster-operations-and-maintenance/etcd-maintenance) guide.
+См. руководство по [обслуживанию etcd](https://docs.siderolabs.com/talos/v1.11/build-and-extend-talos/cluster-operations-and-maintenance/etcd-maintenance).
 
-### `etcd` Quorum is Lost
+### Кворум `etcd` потерян
 
-See [disaster recovery](../build-and-extend-talos/cluster-operations-and-maintenance/disaster-recovery) guide.
+См. руководство по [аварийному восстановлению](https://docs.siderolabs.com/talos/v1.11/build-and-extend-talos/cluster-operations-and-maintenance/disaster-recovery).
 
-### Other Issues
+### Другие вопросы
 
-`etcd` will only run on control plane nodes.
-If a node is designated as a worker node, you should not expect `etcd` to be running on it.
+`etcd` будет запускаться только на узлах Control Plane.
+Если узел назначен рабочим узлом, не следует ожидать, что на нем будет запущена команда `etcd`.
 
-When a node boots for the first time, the `etcd` data directory (`/var/lib/etcd`) is empty, and it will only be populated when `etcd` is launched.
+При первой загрузке узла каталог данных `etcd` (`/var/lib/etcd`) пуст и будет заполнен только при запуске `etcd`.
 
-If the `etcd` service is crashing and restarting, check its logs with `talosctl -n <IP> logs etcd`.
-The most common reasons for crashes are:
+Если служба `etcd` аварийно завершает работу и перезапускается, проверьте ее журналы с помощью команды `talosctl -n <IP> logs etcd`.
+Наиболее распространенные причины аварий:
 
-* wrong arguments passed via `extraArgs` in the configuration;
-* booting Talos on non-empty disk with an existing Talos installation, `/var/lib/etcd` contains data from the old cluster.
+* Неверные аргументы, переданные через `extraArgs` в конфигурации;
+* При загрузке Talos с непустого диска с уже установленной Talos, `/var/lib/etcd` содержит данные из старого кластера.
 
-## `kubelet` and Kubernetes Node Issues
+## Проблемы с `kubelet` и узлами Kubernetes
 
-The `kubelet` service should be running on all Talos nodes, and it is responsible for running Kubernetes pods,
-static pods (including control plane components), and registering the node with the Kubernetes API server.
+Сервис `kubelet` должен быть запущен на всех узлах Talos и отвечает за запуск подов Kubernetes.
+статические поды (включая компоненты Control Plane) и регистрация узла на сервере API Kubernetes.
 
-If the `kubelet` doesn't run on a control plane node, it will block the control plane components from starting.
+Если `kubelet` не запущен на узле Control Plane, он заблокирует запуск компонентов Control Plane.
 
-The node will not be registered in Kubernetes until the Kubernetes API server is up and initial Kubernetes manifests are applied.
+Узел не будет зарегистрирован в Kubernetes до тех пор, пока не будет запущен сервер API Kubernetes и не будут применены начальные манифесты Kubernetes.
 
-### `kubelet` is not running
+### `kubelet` не запущен
 
-Check that `kubelet` image is available (`talosctl image ls --namespace system`).
+Убедитесь, что образ `kubelet` доступен (`talosctl image ls --namespace system`).
 
-Check `kubelet` logs with `talosctl -n IP logs kubelet` for startup errors:
+Проверьте логи `kubelet` с помощью команды `talosctl -n IP logs kubelet` на наличие ошибок запуска:
 
-* make sure Kubernetes version is [supported](../getting-started/support-matrix) with this Talos release
-* make sure `kubelet` extra arguments and extra configuration supplied with Talos machine configuration is valid
+* Убедитесь, что версия Kubernetes [поддерживается](https://docs.siderolabs.com/talos/v1.11/getting-started/support-matrix) в этом релизе Talos.
+* Убедитесь, что дополнительные аргументы `kubelet` и дополнительная конфигурация, предоставляемая вместе с конфигурацией машины Talos, являются допустимыми.
 
-### Talos Complains about Node Not Found
+### Talos выдает ошибку "Узел не найден"
 
-`kubelet` hasn't yet registered the node with the Kubernetes API server, this is expected during initial cluster bootstrap, the error will go away.
-If the message persists, check Kubernetes API health.
+`kubelet` еще не зарегистрировал узел на сервере API Kubernetes; это ожидаемое поведение на этапе первоначальной загрузки кластера, после чего ошибка исчезнет.
+Если сообщение не исчезает, проверьте работоспособность API Kubernetes.
 
-The Kubernetes controller manager (`kube-controller-manager`) is responsible for monitoring the certificate
-signing requests (CSRs) and issuing certificates for each of them.
-The `kubelet` is responsible for generating and submitting the CSRs for its
-associated node.
+Менеджер контроллеров Kubernetes («kube-controller-manager») отвечает за мониторинг сертификата.
+подписание запросов на подписание сертификатов (CSR) и выдача сертификатов по каждому из них.
+«Кублетт» отвечает за генерацию и отправку запросов на обслуживание клиентов (CSR) для своего приложения.
+связанный узел.
 
-The state of any CSRs can be checked with `kubectl get csr`:
+Состояние любого запроса на подписание сертификата (CSR) можно проверить с помощью команды `kubectl get csr`:
 
 ```
 $ kubectl get csr
 NAME        AGE   SIGNERNAME                                    REQUESTOR                 CONDITION
-csr-jcn9j   14m   kubernetes.io/kube-apiserver-client-kubelet   system:bootstrap:q9pyzr   Approved,Issued
-csr-p6b9q   14m   kubernetes.io/kube-apiserver-client-kubelet   system:bootstrap:q9pyzr   Approved,Issued
-csr-sw6rm   14m   kubernetes.io/kube-apiserver-client-kubelet   system:bootstrap:q9pyzr   Approved,Issued
-csr-vlghg   14m   kubernetes.io/kube-apiserver-client-kubelet   system:bootstrap:q9pyzr   Approved,Issued
+csr-jcn9j 14m kubernetes.io/kube-apiserver-client-kubelet system:bootstrap:q9pyzr Approved,Issued
+csr-p6b9q 14m kubernetes.io/kube-apiserver-client-kubelet system:bootstrap:q9pyzr Approved,Issued
+csr-sw6rm 14m kubernetes.io/kube-apiserver-client-kubelet system:bootstrap:q9pyzr Approved,Issued
+csr-vlghg 14m kubernetes.io/kube-apiserver-client-kubelet system:bootstrap:q9pyzr Approved,Issued
 ```
 
-### `kubectl get nodes` Reports Wrong Internal IP
+### Команда `kubectl get nodes` выдает ошибку "Неверный внутренний IP-адрес".
 
-Configure the correct internal IP address with [`.machine.kubelet.nodeIP`](../reference/configuration/v1alpha1/config#Config.machine.kubelet.nodeIP)
+Настройте правильный внутренний IP-адрес с помощью [`.machine.kubelet.nodeIP`](https://docs.siderolabs.com/talos/v1.11/reference/configuration/v1alpha1/config#Config.machine.kubelet.nodeIP)
 
-### `kubectl get nodes` Reports Wrong External IP
+### Команда `kubectl get nodes` выдает ошибку "Неверный внешний IP-адрес".
 
-Talos Linux doesn't manage the external IP, it is managed with the Kubernetes Cloud Controller Manager.
+Talos Linux не управляет внешним IP-адресом, это делается с помощью Kubernetes Cloud Controller Manager.
 
-### `kubectl get nodes` Reports Wrong Node Name
+### Команда `kubectl get nodes` выдает ошибку "Неверное имя узла".
 
-By default, the Kubernetes node name is derived from the hostname.
-Update the hostname using the machine configuration, cloud configuration, or via DHCP server.
+По умолчанию имя узла Kubernetes определяется на основе имени хоста.
+Обновите имя хоста, используя конфигурацию машины, облачную конфигурацию или DHCP-сервер.
 
-### Node Is Not Ready
+### Узел не готов
 
-A Node in Kubernetes is marked as `Ready` only once its CNI is up.
-It takes a minute or two for the CNI images to be pulled and for the CNI to start.
-If the node is stuck in this state for too long, check CNI pods and logs with `kubectl`.
-Usually, CNI-related resources are created in `kube-system` namespace.
+В Kubernetes узел помечается как «готовый» только после того, как его CNI-интерфейс будет активирован.
+Загрузка изображений CNI и запуск CNI занимают минуту-две.
+Если узел застрял в этом состоянии слишком долго, проверьте поды CNI и логи с помощью `kubectl`.
+Как правило, ресурсы, связанные с CNI, создаются в пространстве имен `kube-system`.
 
-For example, for the default Talos Flannel CNI:
+Например, для стандартного CNI Talos Flannel:
 
 ```
-$ kubectl -n kube-system get pods
+$ kubectl -n kube-system получить модули
 NAME                                             READY   STATUS    RESTARTS   AGE
 ...
-kube-flannel-25drx                               1/1     Running   0          23m
-kube-flannel-8lmb6                               1/1     Running   0          23m
-kube-flannel-gl7nx                               1/1     Running   0          23m
-kube-flannel-jknt9                               1/1     Running   0          23m
+kube-flannel-25drx 1/1 Running 0 23m
+kube-flannel-8lmb6 1/1 Running 0 23m
+kube-flannel-gl7nx 1/1 Running 0 23m
+kube-flannel-jknt9 1/1 Running 0 23m
 ...
 ```
 
-### Duplicate/Stale Nodes
+### Дублирующиеся/Устаревшие узлы
 
-Talos Linux doesn't remove Kubernetes nodes automatically, so if a node is removed from the cluster, it will still be present in Kubernetes.
-Remove the node from Kubernetes with `kubectl delete node <node-name>`.
+Talos Linux не удаляет узлы Kubernetes автоматически, поэтому, если узел удален из кластера, он все равно останется в Kubernetes.
+Удалите узел из Kubernetes с помощью команды `kubectl delete node <node-name>`.
 
-### Talos Complains about Certificate Errors on `kubelet` API
+### Talos жалуется на ошибки сертификатов в API `kubelet`
 
-This error might appear during initial cluster bootstrap, and it will go away once the Kubernetes API server is up and the node is registered.
+Эта ошибка может появиться во время начальной загрузки кластера и исчезнет после запуска сервера API Kubernetes и регистрации узла.
 
-The example of Talos logs:
+Пример логов Talos:
 
 ```
 [talos] controller failed {"component": "controller-runtime", "controller": "k8s.KubeletStaticPodController", "error": "error refreshing pod status: error fetching pod status: Get \"https://127.0.0.1:10250/pods/?timeout=30s\": remote error: tls: internal error"}
 ```
 
-By default configuration, `kubelet` issues a self-signed server certificate, but when `rotate-server-certificates` feature is enabled,
-`kubelet` issues its certificate using `kube-apiserver`.
-Make sure the `kubelet` CSR is approved by the Kubernetes API server.
+По умолчанию `kubelet` выдает самоподписанный серверный сертификат, но при включении функции `rotate-server-certificates`,
+`kubelet` выдает свой сертификат, используя `kube-apiserver`.
+Убедитесь, что запрос на подписание сертификата `kubelet` одобрен сервером API Kubernetes.
 
-In either case, this error is not critical, as it only affects reporting of the pod status to Talos Linux.
+В любом случае, эта ошибка не является критической, поскольку она влияет только на передачу информации о состоянии пода в Talos Linux.
 
-## Kubernetes Control Plane
+## Control Plane Kubernetes
 
-The Kubernetes control plane consists of the following components:
+Control Plane Kubernetes состоит из следующих компонентов:
 
-* `kube-apiserver` - the Kubernetes API server
-* `kube-controller-manager` - the Kubernetes controller manager
-* `kube-scheduler` - the Kubernetes scheduler
+* `kube-apiserver` — API-сервер Kubernetes
+* `kube-controller-manager` — менеджер контроллеров Kubernetes
+* `kube-scheduler` — планировщик Kubernetes
 
-Optionally, `kube-proxy` runs as a DaemonSet to provide pod-to-service communication.
+При желании `kube-proxy` может запускаться как DaemonSet для обеспечения связи между подом и сервисом.
 
-`coredns` provides name resolution for the cluster.
+`coredns` обеспечивает разрешение имен для кластера.
 
-CNI is not part of the control plane, but it is required for Kubernetes pods using pod networking.
+CNI не является частью Control Plane, но он необходим для подов Kubernetes, использующих сетевое взаимодействие между подами.
 
-Troubleshooting should always start with `kube-apiserver`, and then proceed to other components.
+Поиск и устранение неисправностей всегда следует начинать с `kube-apiserver`, а затем переходить к другим компонентам.
 
-Talos Linux configures `kube-apiserver` to talk to the `etcd` running on the same node, so `etcd` must be healthy before `kube-apiserver` can start.
-The `kube-controller-manager` and `kube-scheduler` are configured to talk to the `kube-apiserver` on the same node, so they will not start until `kube-apiserver` is healthy.
+В Talos Linux `kube-apiserver` настроен на взаимодействие с `etcd`, работающим на том же узле, поэтому `etcd` должен быть работоспособен, прежде чем `kube-apiserver` сможет запуститься.
+Компоненты `kube-controller-manager` и `kube-scheduler` настроены на взаимодействие с компонентом `kube-apiserver` на том же узле, поэтому они не запустятся, пока `kube-apiserver` не будет работать корректно.
 
-### Control Plane Static Pods
+### Статические модули Control Plane
 
-Talos should generate the static pod definitions for the Kubernetes control plane
-as resources:
+Talos должен генерировать статические определения подов для Control Plane Kubernetes.
+в качестве ресурсов:
 
 ```
 $ talosctl -n <IP> get staticpods
@@ -271,7 +271,7 @@ NODE         NAMESPACE   TYPE        ID                        VERSION
 172.20.0.2   k8s         StaticPod   kube-scheduler            1
 ```
 
-Talos should report that the static pod definitions are rendered for the `kubelet`:
+Talos должен сообщить, что статические определения подов отображаются для `kubelet`:
 
 ```
 $ talosctl -n <IP> dmesg | grep 'rendered new'
@@ -280,40 +280,38 @@ $ talosctl -n <IP> dmesg | grep 'rendered new'
 172.20.0.2: user: warning: [2023-04-26T19:17:52.554607204Z]: [talos] rendered new static pod {"component": "controller-runtime", "controller": "k8s.StaticPodServerController", "id": "kube-scheduler"}
 ```
 
-If the static pod definitions are not rendered, check `etcd` and `kubelet` service health (see above)
-and the controller runtime logs (`talosctl logs controller-runtime`).
+Если статические определения подов не отображаются, проверьте состояние служб `etcd` и `kubelet` (см. выше).
+а также журналы выполнения контроллера (`talosctl logs controller-runtime`).
 
-### Control Plane Pod Status
+### Состояние модуля управления
 
-Initially the `kube-apiserver` component will not be running, and it takes some time before it becomes fully up
-during bootstrap (image should be pulled from the Internet, etc.)
+Изначально компонент `kube-apiserver` не будет запущен, и потребуется некоторое время, прежде чем он полностью заработает.
+во время загрузки Bootstrap (изображение следует брать из интернета и т. д.)
 
-The status of the control plane components on each of the control plane nodes can be checked with `talosctl containers -k`:
+Состояние компонентов Control Plane на каждом из узлов Control Plane можно проверить с помощью команды `talosctl containers -k`:
 
-<CodeBlock lang="sh">
-  {`
-    $ talosctl -n <IP> containers --kubernetes
-    NODE         NAMESPACE   ID                                                                                            IMAGE                                               PID    STATUS
-    172.20.0.2   k8s.io      kube-system/kube-apiserver-talos-default-controlplane-1                                       registry.k8s.io/pause:3.2                                2539   SANDBOX_READY
-    172.20.0.2   k8s.io      └─ kube-system/kube-apiserver-talos-default-controlplane-1:kube-apiserver:51c3aad7a271        registry.k8s.io/kube-apiserver:v${k8s_release} 2572   CONTAINER_RUNNING
-    `}
-</CodeBlock>
+```
+$ talosctl -n <IP> containers --kubernetes
+  NODE         NAMESPACE   ID                                                                                            IMAGE                                               PID    STATUS
+  172.20.0.2   k8s.io      kube-system/kube-apiserver-talos-default-controlplane-1                                       registry.k8s.io/pause:3.2                                2539   SANDBOX_READY
+  172.20.0.2   k8s.io      └─ kube-system/kube-apiserver-talos-default-controlplane-1:kube-apiserver:51c3aad7a271        registry.k8s.io/kube-apiserver:v1.35.0 2572   CONTAINER_RUNNING
+```
 
-The logs of the control plane components can be checked with `talosctl logs --kubernetes` (or with `-k` as a shorthand):
+Журналы компонентов Control Plane можно проверить с помощью команды `talosctl logs --kubernetes` (или с помощью `-k` в качестве сокращенной записи):
 
 ```
 talosctl -n <IP> logs -k kube-system/kube-apiserver-talos-default-controlplane-1:kube-apiserver:51c3aad7a271
 ```
 
-If the control plane component reports error on startup, check that:
+Если компонент control plane сообщает об ошибке при запуске, проверьте следующее:
 
-* make sure Kubernetes version is [supported](../getting-started/support-matrix) with this Talos release
-* make sure extra arguments and extra configuration supplied with Talos machine configuration is valid
+* Убедитесь, что версия Kubernetes [поддерживается](https://docs.siderolabs.com/talos/v1.11/getting-started/support-matrix) в этом релизе Talos.
+* Убедитесь, что дополнительные аргументы и дополнительные параметры конфигурации, предоставленные вместе с конфигурацией машины Talos, являются допустимыми.
 
-### Kubernetes Bootstrap Manifests
+### Манифесты начальной загрузки Kubernetes
 
-As part of the bootstrap process, Talos injects bootstrap manifests into Kubernetes API server.
-There are two kinds of these manifests: system manifests built-in into Talos and extra manifests downloaded (custom CNI, extra manifests in the machine config):
+В рамках процесса начальной загрузки Talos внедряет манифесты начальной загрузки в API-сервер Kubernetes.
+Существует два типа таких манифестов: системные манифесты, встроенные в Talos, и дополнительные манифесты, загружаемые извне (пользовательские CNI, дополнительные манифесты в конфигурации машины):
 
 ```
 $ talosctl -n <IP> get manifests
@@ -331,7 +329,7 @@ NODE         NAMESPACE      TYPE       ID                               VERSION
 172.20.0.2   controlplane   Manifest   11-kube-config-in-cluster        1
 ```
 
-Details of each manifest can be queried by adding `-o yaml`:
+Подробную информацию о каждом манифесте можно получить, добавив параметр `-o yaml`:
 
 ```
 $ talosctl -n <IP> get manifests 01-csr-approver-role-binding --namespace=controlplane -o yaml
@@ -357,9 +355,9 @@ spec:
           name: system:bootstrappers
 ```
 
-### Other Control Plane Components
+### Другие компоненты Control Plane
 
-Once the Kubernetes API server is up, other control plane components issues can be troubleshooted with `kubectl`:
+После запуска сервера API Kubernetes проблемы с другими компонентами Control Plane можно устранить с помощью команды `kubectl`:
 
 ```
 kubectl get nodes -o wide
@@ -368,73 +366,67 @@ kubectl describe pod -n NAMESPACE POD
 kubectl logs -n NAMESPACE POD
 ```
 
-## Kubernetes API
+## API Kubernetes
 
-The Kubernetes API client configuration (`kubeconfig`) can be retrieved using Talos API with `talosctl -n <IP> kubeconfig` command.
-Talos Linux mostly doesn't depend on the Kubernetes API endpoint for the cluster, but Kubernetes API endpoint should be configured
-correctly for external access to the cluster.
+Конфигурацию клиента Kubernetes API (`kubeconfig`) можно получить с помощью Talos API, используя команду `talosctl -n <IP> kubeconfig`.
+В Talos Linux кластер в основном не зависит от конечной точки API Kubernetes, но конечную точку API Kubernetes следует настроить.
+корректно обеспечивается внешний доступ к кластеру.
 
-### Kubernetes Control Plane Endpoint
+### Конечная точка Control Plane Kubernetes
 
-The Kubernetes control plane endpoint is the single canonical URL by which the
-Kubernetes API is accessed.
-Especially with high-availability (HA) control planes, this endpoint may point to a load balancer or a DNS name which may
-have multiple `A` and `AAAA` records.
+Конечная точка Control Plane Kubernetes — это единственный канонический URL-адрес, по которому осуществляется доступ к API Kubernetes.
+В частности, в системах управления с высокой доступностью (HA) эта конечная точка может указывать на балансировщик нагрузки или DNS-имя, которое может
+имеют несколько записей типа `A` ​​и `AAAA`.
 
-Like Talos' own API, the Kubernetes API uses mutual TLS, client
-certs, and a common Certificate Authority (CA).
-Unlike general-purpose websites, there is no need for an upstream CA, so tools
-such as cert-manager, Let's Encrypt, or products such
-as validated TLS certificates are not required.
-Encryption, however, *is*, and hence the URL scheme will always be `https://`.
+Подобно собственному API Talos, API Kubernetes использует взаимный TLS, клиентское соединение.
+сертификаты и общий центр сертификации (ЦС).
+В отличие от веб-сайтов общего назначения, здесь нет необходимости в вышестоящем центре сертификации, поэтому инструменты не требуют дополнительных настроек.
+например, cert-manager, Let's Encrypt или подобные продукты.
+поскольку подтвержденные TLS-сертификаты не требуются.
+Однако шифрование *есть*, поэтому схема URL всегда будет `https://`.
 
-By default, the Kubernetes API server in Talos runs on port 6443.
-As such, the control plane endpoint URLs for Talos will almost always be of the form
+По умолчанию сервер API Kubernetes в Talos работает на порту 6443.
+Таким образом, URL-адреса конечных точек Control Plane для Talos почти всегда будут иметь следующий вид:
 `https://endpoint:6443`.
-(The port, since it is not the `https` default of `443` is required.)
-The `endpoint` above may be a DNS name or IP address, but it should be
-directed to the *set* of all controlplane nodes, as opposed to a
-single one.
+(Необходимо указать порт, поскольку он не соответствует порту по умолчанию `443` (https:// ...
+Указанная выше `endpoint` может быть DNS-именем или IP-адресом, но она должна быть следующей:
+направлено на *множество* всех узлов Control Plane, в отличие от
+один.
 
-As mentioned above, this can be achieved by a number of strategies, including:
+Как уже упоминалось выше, этого можно достичь с помощью ряда стратегий, в том числе:
 
-* an external load balancer
-* DNS records
-* Talos-builtin shared IP ([VIP](../networking/vip))
-* BGP peering of a shared IP (such as with [kube-vip](https://kube-vip.io))
+* внешний балансировщик нагрузки
+* DNS-записи
+* Встроенный в Talos общий IP-адрес ([VIP](https://docs.siderolabs.com/talos/v1.11/networking/vip))
+* Установление BGP-пиринга для общего IP-адреса (например, с помощью [kube-vip](https://kube-vip.io))
 
-Using a DNS name here is a good idea, since it allows any other option, while offering
-a layer of abstraction.
-It allows the underlying IP addresses to change without impacting the
-canonical URL.
+Использование DNS-имени здесь — хорошая идея, поскольку это позволяет использовать любой другой вариант, одновременно предоставляя...
+слой абстракции.
+Это позволяет изменять базовые IP-адреса без влияния на
+канонический URL.
 
-Unlike most services in Kubernetes, the API server runs with host networking,
-meaning that it shares the network namespace with the host.
-This means you can use the IP address(es) of the host to refer to the Kubernetes
-API server.
+В отличие от большинства сервисов в Kubernetes, API-сервер работает в рамках сетевой инфраструктуры хоста.
+Это означает, что он использует то же сетевое пространство имен, что и хост.
+Это означает, что вы можете использовать IP-адрес(а) хоста для обращения к Kubernetes.
+API-сервер.
 
-For availability of the API, it is important that any load balancer be aware of
-the health of the backend API servers, to minimize disruptions during
-common node operations like reboots and upgrades.
+Для обеспечения доступности API важно, чтобы любой балансировщик нагрузки был осведомлен о следующем:
+проверка работоспособности серверов бэкэнд-API для минимизации сбоев во время работы.
+Типичные операции с узлами, такие как перезагрузка и обновление.
 
-## Miscellaneous
+## Прочее
 
-### Checking Controller Runtime Logs
+### Проверка журналов выполнения контроллера
 
-Talos runs a set of [controllers](../learn-more/controllers-resources) which operate on resources to build and support machine operations.
+Talos использует набор [контроллеров](https://docs.siderolabs.com/talos/v1.11/learn-more/controllers-resources), которые работают с ресурсами для построения и поддержки операций машины.
 
-Some debugging information can be queried from the controller logs with `talosctl logs controller-runtime`:
+Некоторую отладочную информацию можно получить из логов контроллера с помощью команды `talosctl logs controller-runtime`:
 
 ```
 talosctl -n <IP> logs controller-runtime
 ```
 
-Controllers continuously run a reconcile loop, so at any time, they may be starting, failing, or restarting.
-This is expected behavior.
+Контроллеры постоянно работают в цикле согласования, поэтому в любой момент времени они могут запускаться, выходить из строя или перезапускаться.
+Это ожидаемое поведение.
 
-If there are no new messages in the `controller-runtime` log, it means that the controllers have successfully finished reconciling, and that the current system state is the desired system state.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.siderolabs.com/llms.txt
+Если в журнале `controller-runtime` нет новых сообщений, это означает, что контроллеры успешно завершили согласование, и текущее состояние системы соответствует желаемому состоянию системы.

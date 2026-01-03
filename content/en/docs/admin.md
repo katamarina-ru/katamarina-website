@@ -363,7 +363,7 @@ spec:
 
 Once the Kubernetes API server is up, other control plane components issues can be troubleshooted with `kubectl`:
 
-```shell  theme={null}
+```
 kubectl get nodes -o wide
 kubectl get pods -o wide --all-namespaces
 kubectl describe pod -n NAMESPACE POD

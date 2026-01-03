@@ -74,8 +74,3 @@ weight: 43
 * В самой правой части отображается конфигурация сети, которая будет применена после нажатия кнопки «Сохранить».
 
 После сохранения конфигурации сетевой конфигурации платформы она немедленно применяется к машине.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.siderolabs.com/llms.txt

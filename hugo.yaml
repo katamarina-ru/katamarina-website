@@ -145,7 +145,7 @@ params:
     developer:
       - name: Katamarina project on GitFlic
         url: https://gitflic.ru/company/katamarina
-        icon: fab fa-github
+        icon: fab fa-git
         desc: Development takes place here!
       - name: Telegram
         url: https://t.me/katamarina_ru

@@ -29,7 +29,7 @@ handled by a set of controllers that run inside the cluster. The high-level flow
 4. **Platform chart** (`packages/core/platform`) is deployed as a regular
    Package. It reads the cluster configuration from the
    `cozystack.cozystack-platform`
-   [Package]({{% ref "/docs/v1/operations/configuration/platform-package" %}})
+   [Package]()
    resource and templates bundle manifests that define which system components
    should be installed.
    
@@ -42,7 +42,7 @@ handled by a set of controllers that run inside the cluster. The high-level flow
    created by the operator, pulling chart artifacts from `ExternalArtifact`
    resources and applying them to the cluster.
 
-For the full reconciliation chain (PackageSource → ArtifactGenerator → ExternalArtifact → Package → HelmRelease → Pods), dependency resolution, update and rollback flows, and the cozypkg CLI, see [Key Concepts]({{% ref "/docs/v1/guides/concepts" %}}).
+For the full reconciliation chain (PackageSource → ArtifactGenerator → ExternalArtifact → Package → HelmRelease → Pods), dependency resolution, update and rollback flows, and the cozypkg CLI, see [Key Concepts]().
 
 ### OCIRepositories and Migration Flow
 
@@ -135,9 +135,9 @@ The operator image and platform source URL are injected at build time.
 
 A Helm chart deployed as a regular `Package` (not applied directly). It reads the
 cluster configuration from the `cozystack.cozystack-platform`
-[Package]({{% ref "/docs/v1/operations/configuration/platform-package" %}})
+[Package]()
 resource and templates manifests according to the specified
-[variant]({{% ref "/docs/v1/operations/configuration/variants" %}}) and
+[variant]() and
 component settings, defining which system components should be installed.
 
 #### flux-aio

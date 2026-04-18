@@ -158,3 +158,7 @@ menus:
   - name: GitFlic
     url: https://gitflic.ru/company/katamarina
     weight: 10
+    
+services:
+  googleAnalytics:
+    ID: G-0WJW227WGM

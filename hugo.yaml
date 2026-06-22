@@ -92,9 +92,9 @@ outputs:
 params:
   description: Free and Open Source PaaS-platform for seamless management of virtual machines, managed Kubernetes, and Databases-as-a-Service
   copyright: XSYSTECH,
-  github_repo: https://github.com/katamarina-ru/katamarina-website
+  github_repo: https://sourcecraft.dev/katamarina/katamarina-website
   github_branch: master
-  github_project_repo: https://gitflic.ru/company/katamarina/
+  github_project_repo: https://sourcecraft.dev/katamarina
   support: /support
   images: [img/cozystack-social.png]
   # Enable Algolia DocSearch
@@ -143,8 +143,8 @@ params:
         desc: Get enterprise-grade support.
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
-      - name: Katamarina project on GitFlic
-        url: https://gitflic.ru/company/katamarina
+      - name: Katamarina project on Git
+        url: https://sourcecraft.dev/katamarina
         icon: fab fa-git
         desc: Development takes place here!
       - name: Telegram
@@ -155,8 +155,8 @@ params:
 
 menus:
   main:
-  - name: GitFlic
-    url: https://gitflic.ru/company/katamarina
+  - name: Git
+    url: https://sourcecraft.dev/katamarina
     weight: 10
     
 services:

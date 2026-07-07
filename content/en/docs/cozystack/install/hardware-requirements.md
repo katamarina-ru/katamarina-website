@@ -8,7 +8,7 @@ aliases:
   - /docs/v1.5/talos/hardware-requirements
 ---
 
-Cozystack использует [Talos Linux]({{% ref "/docs/v1.5/guides/talos" %}}) — минималистичный дистрибутив Linux, предназначенный исключительно для запуска Kubernetes.
+Cozystack использует [Talos Linux]({{% ref "https://cozystack.ru/docs/v1.5/guides/talos" %}}) — минималистичный дистрибутив Linux, предназначенный исключительно для запуска Kubernetes.
 Обычно это означает, что сервер нельзя совместно использовать с сервисами, которые не запущены Cozystack.
 Хорошая новость в том, что какой бы сервис вам ни понадобился, Cozystack сможет запустить его корректно: безопасно, эффективно и
 в полностью контейнеризованной или виртуализованной среде.
@@ -45,12 +45,12 @@ Cozystack использует [Talos Linux]({{% ref "/docs/v1.5/guides/talos" %
   Он не влияет на установку Talos.
 
   Подробнее о настройке Linstor StorageClass см. в
-  [руководстве по развертыванию Cozystack]({{% ref "/docs/v1.5/getting-started/install-cozystack#3-configure-storage" %}})
+  [руководстве по развертыванию Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack#3-configure-storage" %}})
 
 **Использование одного диска**
 
 Можно использовать один диск с выделенным пространством для пользовательского хранилища.
-См. [Как установить Talos на машину с одним диском]({{% ref "/docs/v1.5/install/how-to/single-disk" %}})
+См. [Как установить Talos на машину с одним диском]({{% ref "https://cozystack.ru/docs/v1.5/install/how-to/single-disk" %}})
 Рекомендуется использовать локальный SSD-диск.
 
 **Сеть:**
@@ -83,7 +83,7 @@ Cozystack использует [Talos Linux]({{% ref "/docs/v1.5/guides/talos" %
 
 ## Распределенный кластер
 
-С помощью Cozystack можно построить [распределенный кластер]({{% ref "/docs/v1.5/operations/stretched/" %}}).
+С помощью Cozystack можно построить [распределенный кластер]({{% ref "https://cozystack.ru/docs/v1.5/operations/stretched/" %}}).
 
 **Сеть:**
 
@@ -116,4 +116,4 @@ Cozystack использует [Talos Linux]({{% ref "/docs/v1.5/guides/talos" %
 
 ## Планирование системных ресурсов
 
-Подробные рекомендации по выделению системных ресурсов (CPU и памяти) на узел с учетом масштаба кластера и количества tenants см. в разделе [Рекомендации по планированию системных ресурсов]({{% ref "/docs/v1.5/install/resource-planning" %}}).
+Подробные рекомендации по выделению системных ресурсов (CPU и памяти) на узел с учетом масштаба кластера и количества tenants см. в разделе [Рекомендации по планированию системных ресурсов]({{% ref "https://cozystack.ru/docs/v1.5/install/resource-planning" %}}).

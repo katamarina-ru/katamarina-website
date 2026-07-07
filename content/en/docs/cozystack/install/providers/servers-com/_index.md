@@ -231,4 +231,4 @@ Talos будет загружен из установленной Ubuntu с по
      kubectl get nodes
      ```
 
-Теперь для продолжения установки следуйте руководству **Get Started**, начиная с раздела [**Установка Cozystack**]({{% ref "/docs/v1.5/getting-started/install-cozystack" %}}).
+Теперь для продолжения установки следуйте руководству **Get Started**, начиная с раздела [**Установка Cozystack**]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack" %}}).

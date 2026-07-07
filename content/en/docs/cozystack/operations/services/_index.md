@@ -25,10 +25,10 @@ weight: 35
 
 Метрики идут от exporters, например node-exporters и kube-state-metrics, в VMAgent, который затем записывает их в VMCluster. Grafana запрашивает данные из VMCluster для визуализации, а Alerta обрабатывает alerts из VMCluster или других источников.
 
-Подробную конфигурацию см. в [справочнике Monitoring Hub]({{% ref "/docs/v1.5/operations/services/monitoring" %}}).
+Подробную конфигурацию см. в [справочнике Monitoring Hub]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring" %}}).
 
 Cozystack включает ряд cluster services.
 Они разворачиваются через настройки tenant, а не через каталог приложений.
 
 Каждый tenant может иметь собственную копию cluster service или использовать сервисы родительского tenant.
-Подробнее о механизме sharing services см. в [Tenant System]({{% ref "/docs/v1.5/guides/tenants#sharing-cluster-services" %}})
+Подробнее о механизме sharing services см. в [Tenant System]({{% ref "https://cozystack.ru/docs/v1.5/guides/tenants#sharing-cluster-services" %}})

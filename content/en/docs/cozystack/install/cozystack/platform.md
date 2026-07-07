@@ -6,9 +6,9 @@ weight: 10
 ---
 
 **Третий шаг** развертывания кластера Cozystack — установка Cozystack в кластер Kubernetes, ранее установленный и настроенный на узлах Talos Linux.
-Предварительное условие для этого шага — [установленный кластер Kubernetes]({{% ref "/docs/v1.5/install/kubernetes" %}}).
+Предварительное условие для этого шага — [установленный кластер Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes" %}}).
 
-Если вы устанавливаете Cozystack впервые, рекомендуем начать с [руководства по Cozystack]({{% ref "/docs/v1.5/getting-started" %}}).
+Если вы устанавливаете Cozystack впервые, рекомендуем начать с [руководства по Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started" %}}).
 
 Чтобы спланировать production-ready установку, следуйте руководству ниже.
 По структуре оно повторяет tutorial, но содержит гораздо больше деталей и объясняет разные варианты установки.
@@ -48,12 +48,12 @@ helm upgrade --install cozystack oci://ghcr.io/cozystack/cozystack/cozy-installe
 
 Замените `<YOUR_API_SERVER_IP>` на внутренний IP-адрес вашего Kubernetes API server (только IP, без протокола и порта).
 
-Полное руководство по развертыванию Cozystack на generic-дистрибутивах Kubernetes см. в разделе [Развертывание Cozystack на Generic Kubernetes]({{% ref "/docs/v1.5/install/kubernetes/generic" %}}).
+Полное руководство по развертыванию Cozystack на generic-дистрибутивах Kubernetes см. в разделе [Развертывание Cozystack на Generic Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/generic" %}}).
 
 ## 2. Описание и применение Platform Package
 
 После запуска operator следующий шаг — описать Platform Package и применить его.
-Platform Package — это ресурс `Package`, который определяет [variant Cozystack]({{% ref "/docs/v1.5/operations/configuration/variants" %}}), [настройки компонентов]({{% ref "/docs/v1.5/operations/configuration/components" %}}),
+Platform Package — это ресурс `Package`, который определяет [variant Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants" %}}), [настройки компонентов]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components" %}}),
 ключевые сетевые настройки, опубликованные сервисы и другие параметры.
 
 Конфигурацию Cozystack можно обновлять после установки.
@@ -96,16 +96,16 @@ Variant `isp-full` — самый полный: он охватывает все
 Выбирайте его, если развертываете Cozystack на bare metal или ВМ и хотите использовать все возможности платформы.
 
 Если вы развертываете Cozystack в предоставленном Kubernetes-кластере или хотите развернуть только Kubernetes-кластер без сервисов,
-см. [обзор и сравнение variants]({{% ref "/docs/v1.5/operations/configuration/variants" %}}).
+см. [обзор и сравнение variants]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants" %}}).
 
 ### 2.2. Тонкая настройка компонентов
 
 Можно добавить дополнительные компоненты или убрать компоненты, включенные по умолчанию.
-См. [справочник components]({{% ref "/docs/v1.5/operations/configuration/components" %}}).
+См. [справочник components]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components" %}}).
 
 Если вы развертываете платформу на ВМ или выделенных серверах облачного провайдера, скорее всего, нужно отключить MetalLB и
 включить специфичный для провайдера load balancer либо использовать другую сетевую конфигурацию.
-См. раздел [установка у конкретных провайдеров]({{% ref "/docs/v1.5/install/providers" %}}).
+См. раздел [установка у конкретных провайдеров]({{% ref "https://cozystack.ru/docs/v1.5/install/providers" %}}).
 В нем может быть полное руководство для вашего провайдера, которое можно использовать для развертывания production-ready кластера.
 
 ### 2.3. Описание сетевой конфигурации
@@ -126,7 +126,7 @@ networking:
 ```
 
 {{% alert color="info" %}}
-Cozystack по умолчанию собирает анонимную статистику использования. Подробнее о том, какие данные собираются и как отказаться от сбора, см. в [документации по Telemetry]({{% ref "/docs/v1.5/operations/configuration/telemetry" %}}).
+Cozystack по умолчанию собирает анонимную статистику использования. Подробнее о том, какие данные собираются и как отказаться от сбора, см. в [документации по Telemetry]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/telemetry" %}}).
 {{% /alert %}}
 
 ### 2.4. Применение Platform Package
@@ -385,7 +385,7 @@ done
 - Для ВМ и выделенных серверов у облачных провайдеров выберите настройку public IP.
     [Большинство облачных провайдеров не поддерживают MetalLB](https://metallb.universe.tf/installation/clouds/).
 
-    См. раздел [установка у конкретных провайдеров]({{% ref "/docs/v1.5/install/providers" %}}).
+    См. раздел [установка у конкретных провайдеров]({{% ref "https://cozystack.ru/docs/v1.5/install/providers" %}}).
     Там могут быть инструкции для вашего провайдера, которые можно использовать для развертывания production-ready кластера.
 
 ### 4.a Настройка MetalLB
@@ -726,6 +726,6 @@ kubectl get secret -n tenant-root tenant-root -o go-template='{{ printf "%s\n" (
 
 ## Следующие шаги
 
-- [Настройте OIDC]({{% ref "/docs/v1.5/operations/oidc/" %}}).
-- [Создайте user tenant]({{% ref "/docs/v1.5/getting-started/create-tenant" %}}).
+- [Настройте OIDC]({{% ref "https://cozystack.ru/docs/v1.5/operations/oidc/" %}}).
+- [Создайте user tenant]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/create-tenant" %}}).
 nant" %}}).

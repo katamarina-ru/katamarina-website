@@ -28,4 +28,4 @@ aliases:
 
 ## Следующие шаги
 
-После установки Talos перейдите к [установке и инициализации кластера Kubernetes]({{% ref "/docs/v1.5/install/kubernetes" %}}).
+После установки Talos перейдите к [установке и инициализации кластера Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes" %}}).

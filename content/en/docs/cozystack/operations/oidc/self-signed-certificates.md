@@ -12,7 +12,7 @@ aliases:
 
 ## Предварительные требования
 
-- Cozystack cluster с включенным OIDC (см. [Enable OIDC Server]({{% ref "/docs/v1.5/operations/oidc/enable_oidc" %}}))
+- Cozystack cluster с включенным OIDC (см. [Enable OIDC Server]({{% ref "https://cozystack.ru/docs/v1.5/operations/oidc/enable_oidc" %}}))
 - Control plane nodes на Talos Linux
 - `talosctl`, настроенный для вашего кластера
 - Установленный `kubelogin`
@@ -184,4 +184,4 @@ kubectl get pods -n kube-system -l component=kube-apiserver \
 
 - **Certificate not found**: убедитесь, что path certificate file в `extraVolumes` совпадает с path, указанным в `oidc-ca-file`.
 - **Domain resolution fails**: проверьте, что `extraHostEntries` корректно настроен на всех control plane nodes.
-- **Authentication fails**: проверьте, что пользователь существует в Keycloak и состоит в нужных groups (см. [Users and Roles]({{% ref "/docs/v1.5/operations/oidc/users_and_roles" %}})).
+- **Authentication fails**: проверьте, что пользователь существует в Keycloak и состоит в нужных groups (см. [Users and Roles]({{% ref "https://cozystack.ru/docs/v1.5/operations/oidc/users_and_roles" %}})).

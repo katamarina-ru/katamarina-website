@@ -24,7 +24,7 @@ Multi-zone конфигурация SeaweedFS доступна начиная с
 ### 1. Создайте tenant без SeaweedFS
 
 Поле `isolated`, которое в ранних релизах Cozystack было доступно в объекте Tenant, удалено в v1.0.
-Текущая модель сетевой изоляции описана в upgrade notes: [флаг `isolated` у Tenant удален]({{% ref "/docs/v1.5/operations/upgrades#tenant-isolated-flag-removed" %}}).
+Текущая модель сетевой изоляции описана в upgrade notes: [флаг `isolated` у Tenant удален]({{% ref "https://cozystack.ru/docs/v1.5/operations/upgrades#tenant-isolated-flag-removed" %}}).
 
 ```yaml
 apiVersion: apps.cozystack.io/v1alpha1

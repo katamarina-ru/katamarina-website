@@ -10,7 +10,7 @@ aliases:
 
 ## Руководство по Cozystack
 
-Если вы устанавливаете Cozystack впервые, рекомендуем [пройти руководство по Cozystack]({{% ref "/docs/v1.5/getting-started" %}}).
+Если вы устанавливаете Cozystack впервые, рекомендуем [пройти руководство по Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started" %}}).
 В нем показан самый короткий путь к созданию proof-of-concept кластера Cozystack.
 
 ## Общий путь установки
@@ -33,23 +33,23 @@ Cozystack можно установить в изолированной сред
 
 ## Автоматизированная установка с Ansible
 
-Для типовых развертываний Linux (Ubuntu, Debian, RHEL, Rocky, openSUSE) [коллекция Ansible]({{% ref "/docs/v1.5/install/ansible" %}}) автоматизирует весь процесс: подготовку ОС, инициализацию кластера k3s и установку Cozystack.
+Для типовых развертываний Linux (Ubuntu, Debian, RHEL, Rocky, openSUSE) [коллекция Ansible]({{% ref "https://cozystack.ru/docs/v1.5/install/ansible" %}}) автоматизирует весь процесс: подготовку ОС, инициализацию кластера k3s и установку Cozystack.
 
 ## Установка у конкретных провайдеров
 
 Для облачных провайдеров есть отдельные руководства, которые охватывают все шаги: от подготовки инфраструктуры до установки и настройки Cozystack.
 Если это ваш случай, рекомендуем использовать руководства ниже:
 
-- [Hetzner]({{% ref "/docs/v1.5/install/providers/hetzner" %}})
-- [Oracle Cloud Infrastructure (OCI)]({{% ref "/docs/v1.5/install/providers/oracle-cloud" %}})
-- [Servers.com]({{% ref "/docs/v1.5/install/providers/servers-com" %}})
+- [Hetzner]({{% ref "https://cozystack.ru/docs/v1.5/install/providers/hetzner" %}})
+- [Oracle Cloud Infrastructure (OCI)]({{% ref "https://cozystack.ru/docs/v1.5/install/providers/oracle-cloud" %}})
+- [Servers.com]({{% ref "https://cozystack.ru/docs/v1.5/install/providers/servers-com" %}})
 
 
 ## Обновление и настройка после развертывания
 
-После развертывания кластера перейдите в раздел [Администрирование кластера]({{% ref "/docs/v1.5/operations" %}}), чтобы выполнить
+После развертывания кластера перейдите в раздел [Администрирование кластера]({{% ref "https://cozystack.ru/docs/v1.5/operations" %}}), чтобы выполнить
 следующие действия:
 
-- [Настройка OIDC]({{% ref "/docs/v1.5/operations/oidc" %}})
-- [Развертывание Cozystack в конфигурации с несколькими дата-центрами]({{% ref "/docs/v1.5/operations/stretched" %}})
-- [Обновление Cozystack]({{% ref "/docs/v1.5/operations/cluster/upgrade" %}})
+- [Настройка OIDC]({{% ref "https://cozystack.ru/docs/v1.5/operations/oidc" %}})
+- [Развертывание Cozystack в конфигурации с несколькими дата-центрами]({{% ref "https://cozystack.ru/docs/v1.5/operations/stretched" %}})
+- [Обновление Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/operations/cluster/upgrade" %}})

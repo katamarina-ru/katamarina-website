@@ -211,6 +211,6 @@ cozypkg del <package-name>
 
 ## Следующие шаги
 
--   Узнайте о [variants Cozystack]({{% ref "/docs/v1.5/operations/configuration/variants" %}}) и о том, как они определяют состав packages.
--   Подробности о переопределении параметров компонентов см. в [справочнике Components]({{% ref "/docs/v1.5/operations/configuration/components" %}}).
+-   Узнайте о [variants Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants" %}}) и о том, как они определяют состав packages.
+-   Подробности о переопределении параметров компонентов см. в [справочнике Components]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components" %}}).
 -   Для установки полной платформы см. [руководство по установке Platform]({{% ref "./platform" %}}).

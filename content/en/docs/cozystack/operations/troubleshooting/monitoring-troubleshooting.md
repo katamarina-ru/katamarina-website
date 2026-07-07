@@ -52,7 +52,7 @@ vmagent:
 - Проверьте сертификаты в конфигурации VMAgent.
 - Проверьте, что роли RBAC позволяют VMAgent обращаться к нужным endpoints.
 
-Подробнее см. [Настройка мониторинга]({{% ref "/docs/v1.5/operations/services/monitoring/setup" %}}).
+Подробнее см. [Настройка мониторинга]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring/setup" %}}).
 
 ## Alerts не приходят
 
@@ -109,7 +109,7 @@ alerta:
 - Используйте RBAC для ограничения доступа к alerts.
 - Включите TLS для alert endpoints.
 
-Подробности конфигурации см. в [Alerting мониторинга]({{% ref "/docs/v1.5/operations/services/monitoring/alerting" %}}).
+Подробности конфигурации см. в [Alerting мониторинга]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring/alerting" %}}).
 
 ## Проблемы Grafana
 
@@ -154,7 +154,7 @@ grafana:
 - Включите authentication и authorization.
 - Используйте TLS для доступа к Grafana.
 
-Настройка dashboard описана в [Dashboard мониторинга]({{% ref "/docs/v1.5/operations/services/monitoring/dashboards" %}}).
+Настройка dashboard описана в [Dashboard мониторинга]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring/dashboards" %}}).
 
 ## Проблемы сбора логов
 
@@ -199,4 +199,4 @@ logsStorages:
 - Используйте RBAC для доступа к логам.
 - Включите TLS для передачи логов.
 
-Дополнительная информация приведена в [Логах мониторинга]({{% ref "/docs/v1.5/operations/services/monitoring/logs" %}}).
+Дополнительная информация приведена в [Логах мониторинга]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring/logs" %}}).

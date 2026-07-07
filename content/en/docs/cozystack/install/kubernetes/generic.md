@@ -16,12 +16,12 @@ weight: 50
 - Ваша инфраструктура не поддерживает Talos Linux (некоторые облачные провайдеры, embedded-системы)
 - Вам нужны специфические функции или пакеты Linux, недоступные в Talos
 
-Для новых production-развертываний рекомендуется [Talos Linux]({{% ref "/docs/v1.5/guides/talos" %}}) благодаря его преимуществам в безопасности и эксплуатации.
+Для новых production-развертываний рекомендуется [Talos Linux]({{% ref "https://cozystack.ru/docs/v1.5/guides/talos" %}}) благодаря его преимуществам в безопасности и эксплуатации.
 
 ## Предварительные требования
 
 {{% alert color="warning" %}}
-**Ubuntu hosts with UEFI Secure Boot enabled** require pre-installing `drbd-dkms` before deploying Cozystack. The default piraeus-operator flow compiles DRBD in-cluster and `insmod`s the unsigned module, which kernel lockdown rejects with `Key was rejected by service`. See [Ubuntu + Secure Boot]({{% ref "/docs/v1.5/install/kubernetes/ubuntu-secure-boot" %}}) for the workaround.
+**Ubuntu hosts with UEFI Secure Boot enabled** require pre-installing `drbd-dkms` before deploying Cozystack. The default piraeus-operator flow compiles DRBD in-cluster and `insmod`s the unsigned module, which kernel lockdown rejects with `Key was rejected by service`. See [Ubuntu + Secure Boot]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/ubuntu-secure-boot" %}}) for the workaround.
 {{% /alert %}}
 
 ### Supported Distributions
@@ -36,7 +36,7 @@ Cozystack протестирован на:
 
 - **Операционная система**: Ubuntu 22.04+ или Debian 12+ (kernel 5.x+ с systemd)
 - **Архитектура**: amd64 или arm64
-- **Оборудование**: см. [требования к оборудованию]({{% ref "/docs/v1.5/install/hardware-requirements" %}})
+- **Оборудование**: см. [требования к оборудованию]({{% ref "https://cozystack.ru/docs/v1.5/install/hardware-requirements" %}})
 
 ### Обязательные пакеты
 
@@ -455,7 +455,7 @@ spec:
 
 Ключ — `kubeovn` (без дефиса), он соответствует полю в
 `packages/core/platform/values.yaml` — см. также
-[`networking.kubeovn.MASTER_NODES`]({{% ref "/docs/v1.5/operations/configuration/platform-package" %}})
+[`networking.kubeovn.MASTER_NODES`]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/platform-package" %}})
 в справочнике Platform Package.
 
 ### Cilium не может подключиться к API server
@@ -488,9 +488,9 @@ spec:
 
 После завершения установки Cozystack:
 
-1. [Настройте хранилище с LINSTOR]({{% ref "/docs/v1.5/getting-started/install-cozystack#3-configure-storage" %}})
-2. [Настройте root tenant]({{% ref "/docs/v1.5/getting-started/install-cozystack#51-setup-root-tenant-services" %}})
-3. [Разверните первое приложение]({{% ref "/docs/v1.5/applications" %}})
+1. [Настройте хранилище с LINSTOR]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack#3-configure-storage" %}})
+2. [Настройте root tenant]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack#51-setup-root-tenant-services" %}})
+3. [Разверните первое приложение]({{% ref "https://cozystack.ru/docs/v1.5/applications" %}})
 
 ## Ссылки
 

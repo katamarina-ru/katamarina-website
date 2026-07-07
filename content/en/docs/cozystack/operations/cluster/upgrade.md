@@ -31,7 +31,7 @@ Cozystack использует поэтапный процесс выпуска 
 
 Перед обновлением проверьте текущее состояние кластера Cozystack по шагам из раздела
 
-- [Чек-лист диагностики]({{% ref "/docs/v1.5/operations/troubleshooting/#troubleshooting-checklist" %}})
+- [Чек-лист диагностики]({{% ref "https://cozystack.ru/docs/v1.5/operations/troubleshooting/#troubleshooting-checklist" %}})
 
 Убедитесь, что Platform Package находится в рабочем состоянии и содержит ожидаемую конфигурацию:
 
@@ -85,4 +85,4 @@ kubectl logs -n cozy-system deploy/cozystack-operator --previous
 
 Чтобы убедиться, что все работает как ожидается, повторите шаги из раздела
 
-- [Чек-лист диагностики]({{% ref "/docs/v1.5/operations/troubleshooting/#troubleshooting-checklist" %}})
+- [Чек-лист диагностики]({{% ref "https://cozystack.ru/docs/v1.5/operations/troubleshooting/#troubleshooting-checklist" %}})

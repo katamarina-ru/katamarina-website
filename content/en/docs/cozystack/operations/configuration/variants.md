@@ -42,23 +42,23 @@ aliases:
 | Подсистема виртуализации      |                        | [KubeVirt]             | [KubeVirt]             |                        |
 | Подсистема OS и [Kubernetes]  |                        | [Talos Linux]          |                        |                        |
 
-[apps]: {{% ref "/docs/v1.5/applications" %}}
-[vm]: {{% ref "/docs/v1.5/virtualization" %}}
-[k8s]: {{% ref "/docs/v1.5/kubernetes" %}}
-[api]: {{% ref "/docs/v1.5/cozystack-api" %}}
-[monitoring subsystem]: {{% ref "/docs/v1.5/guides/platform-stack#victoria-metrics" %}}
-[linstor]: {{% ref "/docs/v1.5/guides/platform-stack#drbd" %}}
-[kube-ovn]: {{% ref "/docs/v1.5/guides/platform-stack#kube-ovn" %}}
-[cilium]: {{% ref "/docs/v1.5/guides/platform-stack#cilium" %}}
-[kubevirt]: {{% ref "/docs/v1.5/guides/platform-stack#kubevirt" %}}
-[talos linux]: {{% ref "/docs/v1.5/guides/platform-stack#talos-linux" %}}
-[kubernetes]: {{% ref "/docs/v1.5/guides/platform-stack#kubernetes" %}}
+[apps]: {{% ref "https://cozystack.ru/docs/v1.5/applications" %}}
+[vm]: {{% ref "https://cozystack.ru/docs/v1.5/virtualization" %}}
+[k8s]: {{% ref "https://cozystack.ru/docs/v1.5/kubernetes" %}}
+[api]: {{% ref "https://cozystack.ru/docs/v1.5/cozystack-api" %}}
+[monitoring subsystem]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#victoria-metrics" %}}
+[linstor]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#drbd" %}}
+[kube-ovn]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#kube-ovn" %}}
+[cilium]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#cilium" %}}
+[kubevirt]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#kubevirt" %}}
+[talos linux]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#talos-linux" %}}
+[kubernetes]: {{% ref "https://cozystack.ru/docs/v1.5/guides/platform-stack#kubernetes" %}}
 [kubernetes operators]: https://github.com/cozystack/cozystack/blob/main/packages/core/platform/templates/bundles/paas.yaml
 
-[default]: {{% ref "/docs/v1.5/operations/configuration/variants#default" %}}
-[isp-full]: {{% ref "/docs/v1.5/operations/configuration/variants#isp-full" %}}
-[isp-full-generic]: {{% ref "/docs/v1.5/operations/configuration/variants#isp-full-generic" %}}
-[isp-hosted]: {{% ref "/docs/v1.5/operations/configuration/variants#isp-hosted" %}}
+[default]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants#default" %}}
+[isp-full]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants#isp-full" %}}
+[isp-full-generic]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants#isp-full-generic" %}}
+[isp-hosted]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants#isp-hosted" %}}
 
 
 ## Выбор подходящего варианта
@@ -71,7 +71,7 @@ Variants объединяют bundles из разных слоев под кон
 `default` - минимальный вариант, который предоставляет только набор PackageSources (ссылки на package registry).
 Bundles и компоненты заранее не настроены: все packages управляются вручную через [cozypkg](https://github.com/cozystack/cozystack/tree/main/cmd/cozypkg).
 Используйте этот вариант, когда нужен полный контроль над тем, какие packages установлены и настроены.
-Именно этот вариант используется в workflow [Build Your Own Platform (BYOP)]({{% ref "/docs/v1.5/install/cozystack/kubernetes-distribution" %}}).
+Именно этот вариант используется в workflow [Build Your Own Platform (BYOP)]({{% ref "https://cozystack.ru/docs/v1.5/install/cozystack/kubernetes-distribution" %}}).
 
 Пример конфигурации:
 
@@ -124,7 +124,7 @@ spec:
 `isp-full-generic` предоставляет такой же полнофункциональный PaaS и IaaS, как `isp-full`, но предназначен для обычных дистрибутивов Kubernetes, таких как k3s, kubeadm или RKE2.
 Используйте этот вариант, если нужен полный набор возможностей Cozystack без обязательного Talos Linux.
 
-Подробные инструкции по установке см. в [руководстве Generic Kubernetes]({{% ref "/docs/v1.5/install/kubernetes/generic" %}}).
+Подробные инструкции по установке см. в [руководстве Generic Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/generic" %}}).
 
 Пример конфигурации:
 
@@ -191,11 +191,11 @@ spec:
 ## Подробнее
 
 Полный список параметров конфигурации для каждого варианта см. в
-[справочнике по конфигурации]({{% ref "/docs/v1.5/operations/configuration" %}}).
+[справочнике по конфигурации]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration" %}}).
 
 Полный список компонентов и инструкции по их включению и отключению см. в
-[справочнике компонентов]({{% ref "/docs/v1.5/operations/configuration/components" %}}).
+[справочнике компонентов]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components" %}}).
 
-Чтобы развернуть выбранный вариант, следуйте [руководству по установке Cozystack]({{% ref "/docs/v1.5/install/cozystack" %}})
-или [руководствам для конкретных провайдеров]({{% ref "/docs/v1.5/install/providers" %}}).
-Если вы устанавливаете Cozystack впервые, лучше использовать вариант `isp-full` и пройти [tutorial Cozystack]({{% ref "/docs/v1.5/getting-started" %}}).
+Чтобы развернуть выбранный вариант, следуйте [руководству по установке Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/install/cozystack" %}})
+или [руководствам для конкретных провайдеров]({{% ref "https://cozystack.ru/docs/v1.5/install/providers" %}}).
+Если вы устанавливаете Cozystack впервые, лучше использовать вариант `isp-full` и пройти [tutorial Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started" %}}).

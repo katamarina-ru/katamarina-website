@@ -11,7 +11,7 @@ aliases:
 
 Перед началом убедитесь, что:
 -   Tenant уже существует в Cozystack.
-    Если он еще не создан, см. [Создание пользовательского tenant]({{% ref "/docs/v1.5/getting-started/create-tenant" %}}).
+    Если он еще не создан, см. [Создание пользовательского tenant]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/create-tenant" %}}).
 -   У вас есть доступ к namespace tenant - через OIDC-учетные данные или административный kubeconfig.
 -   `kubectl` установлен и настроен.
 -   (Опционально) установлен `jq`.
@@ -51,7 +51,7 @@ export TOKEN=$(kubectl -n tenant-<name> get tenantsecret tenant-<name> -o json |
 
 ## Использование токена для доступа к API
 
-Получив токен, вы можете [сгенерировать kubeconfig]({{% ref "/docs/v1.5/operations/faq/generate-kubeconfig" %}}) для доступа через kubectl или использовать токен напрямую через `curl`, как показано ниже.
+Получив токен, вы можете [сгенерировать kubeconfig]({{% ref "https://cozystack.ru/docs/v1.5/operations/faq/generate-kubeconfig" %}}) для доступа через kubectl или использовать токен напрямую через `curl`, как показано ниже.
 
 {{% alert color="warning" %}}
 **Безопасность токена**

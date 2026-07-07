@@ -11,7 +11,7 @@ aliases:
 На этой странице описана роль Cozystack Platform Package и приведен полный справочник по его values.
 
 Основная конфигурация Cozystack задается custom resource `Package`.
-Этот Package включает [вариант Cozystack]({{% ref "/docs/v1.5/operations/configuration/variants" %}}), [настройки компонентов]({{% ref "/docs/v1.5/operations/configuration/components" %}}),
+Этот Package включает [вариант Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/variants" %}}), [настройки компонентов]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components" %}}),
 ключевые сетевые параметры, опубликованные сервисы и другие опции.
 
 
@@ -80,8 +80,8 @@ spec:
 | `publishing.certificates.dns01.rfc2136.tsigAlgorithm` | `"HMACSHA256"` | TSIG HMAC algorithm. |
 | `publishing.certificates.dns01.rfc2136.secretName` | `""` | Secret name holding the TSIG key material. Required when `provider=rfc2136`. |
 | `publishing.certificates.dns01.rfc2136.secretKey` | `"tsig-secret-key"` | Key inside the Secret holding the TSIG key. |
-| `publishing.proxyProtocol` | `false` | Enables PROXY-protocol on the host ingress-nginx and auto-deploys [ouroboros]({{% ref "/docs/v1.5/networking/hairpin-proxy-protocol" %}}) to fix the resulting hairpin-NAT problem. The upstream L4 LB in front of ingress-nginx must already be injecting PROXY-v1 headers before this flag flips on; see the linked page for verification recipes and the disable path. |
-| `publishing.proxyProtocolAcknowledgeUnclean` | `false` | Acknowledgement gate for the `helm.sh/resource-policy: keep` asymmetry on the host disable path. Flipping `publishing.proxyProtocol` from `true` back to `false` stops emitting the `cozystack.ouroboros` Package CR but does not uninstall the existing one — the platform render fails until either the Package CR is deleted (which triggers the chart's pre-delete cleanup hook) or this flag is set to `true` to confirm the operator has handled the asymmetry. See [hairpin-proxy-protocol → Disable path]({{% ref "/docs/v1.5/networking/hairpin-proxy-protocol#disable-path" %}}) for the full sequence. |
+| `publishing.proxyProtocol` | `false` | Enables PROXY-protocol on the host ingress-nginx and auto-deploys [ouroboros]({{% ref "https://cozystack.ru/docs/v1.5/networking/hairpin-proxy-protocol" %}}) to fix the resulting hairpin-NAT problem. The upstream L4 LB in front of ingress-nginx must already be injecting PROXY-v1 headers before this flag flips on; see the linked page for verification recipes and the disable path. |
+| `publishing.proxyProtocolAcknowledgeUnclean` | `false` | Acknowledgement gate for the `helm.sh/resource-policy: keep` asymmetry on the host disable path. Flipping `publishing.proxyProtocol` from `true` back to `false` stops emitting the `cozystack.ouroboros` Package CR but does not uninstall the existing one — the platform render fails until either the Package CR is deleted (which triggers the chart's pre-delete cleanup hook) or this flag is set to `true` to confirm the operator has handled the asymmetry. See [hairpin-proxy-protocol → Disable path]({{% ref "https://cozystack.ru/docs/v1.5/networking/hairpin-proxy-protocol#disable-path" %}}) for the full sequence. |
 
 #### Networking
 
@@ -117,7 +117,7 @@ spec:
 
 #### Gateway
 
-Platform-wide Gateway API integration. The actual per-tenant Gateway is materialised only for tenants that explicitly opt in via `tenant.spec.gateway: true` (typically `tenant-root` plus any tenant that needs its own LB IP, custom apex, or separate ACME account). Every other tenant in the tree publishes through the Gateway of the nearest ancestor that owns one — same shape as `_namespace.ingress` inheritance. See the [Gateway API guide]({{% ref "/docs/v1.5/networking/gateway-api" %}}) for the full architecture and migration path.
+Platform-wide Gateway API integration. The actual per-tenant Gateway is materialised only for tenants that explicitly opt in via `tenant.spec.gateway: true` (typically `tenant-root` plus any tenant that needs its own LB IP, custom apex, or separate ACME account). Every other tenant in the tree publishes through the Gateway of the nearest ancestor that owns one — same shape as `_namespace.ingress` inheritance. See the [Gateway API guide]({{% ref "https://cozystack.ru/docs/v1.5/networking/gateway-api" %}}) for the full architecture and migration path.
 
 | Value | Default | Description |
 | --- | --- | --- |
@@ -152,7 +152,7 @@ gateway:
 
 | Value | Default | Description |
 | --- | --- | --- |
-| `branding` | `{}` | UI branding configuration object. See the [White Labeling]({{% ref "/docs/v1.5/operations/configuration/white-labeling" %}}) guide for available fields and usage. Individual fields (e.g., `titleText`, `logoSvg`) have their own defaults when not specified. |
+| `branding` | `{}` | UI branding configuration object. See the [White Labeling]({{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/white-labeling" %}}) guide for available fields and usage. Individual fields (e.g., `titleText`, `logoSvg`) have their own defaults when not specified. |
 
 #### Registries
 
@@ -202,9 +202,9 @@ registries:
 | `migrations.image` | — | Container image, используемый для запуска platform migrations. |
 | `migrations.targetVersion` | — | Номер целевой версии миграции. |
 
-[enable-disable]: {{% ref "/docs/v1.5/operations/configuration/components#enabling-and-disabling-components" %}}
-[overwrite-parameters]: {{% ref "/docs/v1.5/operations/configuration/components#overwriting-component-parameters" %}}
-[Resource Management]: {{% ref "/docs/v1.5/guides/resource-management#cpu-allocation-ratio" %}}
-[oidc]: {{% ref "/docs/v1.5/operations/oidc" %}}
-[telemetry]: {{% ref "/docs/v1.5/operations/configuration/telemetry" %}}
+[enable-disable]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components#enabling-and-disabling-components" %}}
+[overwrite-parameters]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/components#overwriting-component-parameters" %}}
+[Resource Management]: {{% ref "https://cozystack.ru/docs/v1.5/guides/resource-management#cpu-allocation-ratio" %}}
+[oidc]: {{% ref "https://cozystack.ru/docs/v1.5/operations/oidc" %}}
+[telemetry]: {{% ref "https://cozystack.ru/docs/v1.5/operations/configuration/telemetry" %}}
 [kube-ovn]: https://kubeovn.github.io/docs/en/guide/subnet/#join-subnet

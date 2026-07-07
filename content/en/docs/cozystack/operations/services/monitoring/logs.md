@@ -21,7 +21,7 @@ Log storages настраиваются через параметры monitoring
 | `logsStorages[i].storage` | Размер persistent volume | `string` | `"10Gi"` |
 | `logsStorages[i].storageClassName` | StorageClass для хранения данных | `string` | `"replicated"` |
 
-Подробные параметры конфигурации см. в [Monitoring Hub Reference]({{% ref "/docs/v1.5/operations/services/monitoring" %}}).
+Подробные параметры конфигурации см. в [Monitoring Hub Reference]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring" %}}).
 
 ### Fluent Bit inputs и outputs
 
@@ -109,7 +109,7 @@ kubernetes_namespace_name: "kube-system" AND _level: "WARN" AND _msg: *timeout*
 
 ## Просмотр логов tenant Kubernetes cluster
 
-Когда рабочие нагрузки выполняются в [tenant Kubernetes cluster]({{% ref "/docs/v1.5/kubernetes" %}}), их логи собираются и отправляются в экземпляр VictoriaLogs родительского tenant. Затем эти логи можно запрашивать в Grafana с помощью специальных фильтров по label.
+Когда рабочие нагрузки выполняются в [tenant Kubernetes cluster]({{% ref "https://cozystack.ru/docs/v1.5/kubernetes" %}}), их логи собираются и отправляются в экземпляр VictoriaLogs родительского tenant. Затем эти логи можно запрашивать в Grafana с помощью специальных фильтров по label.
 
 ### Предварительные требования
 
@@ -123,7 +123,7 @@ addons:
     enabled: true
 ```
 
-Подробности см. в [параметрах Managed Kubernetes]({{% ref "/docs/v1.5/kubernetes#cluster-addons" %}}).
+Подробности см. в [параметрах Managed Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/kubernetes#cluster-addons" %}}).
 
 ### Labels логов
 
@@ -207,4 +207,4 @@ def log_event(level, message, **kwargs):
     logger.info(json.dumps(log_entry))
 ```
 
-Убедитесь, что парсеры Fluent Bit настроены на обработку вашего формата логов. Подробности настройки см. в [Monitoring Setup]({{% ref "/docs/v1.5/operations/services/monitoring/setup" %}}).
+Убедитесь, что парсеры Fluent Bit настроены на обработку вашего формата логов. Подробности настройки см. в [Monitoring Setup]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring/setup" %}}).

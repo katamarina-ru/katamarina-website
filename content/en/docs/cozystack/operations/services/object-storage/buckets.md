@@ -186,4 +186,4 @@ kubectl get secret media-assets-backup-reader -n tenant-example \
 ## Связанная документация
 
 - [Storage Pools]({{% ref "storage-pools" %}}) -- настройка tiered storage для выбора pool
-- [SeaweedFS Service Reference]({{% ref "/docs/v1.5/operations/services/seaweedfs" %}}) -- полный справочник параметров
+- [SeaweedFS Service Reference]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/seaweedfs" %}}) -- полный справочник параметров

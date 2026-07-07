@@ -48,4 +48,4 @@ linstor controller drbd-options --connect-int 15 --ping-int 15 --ping-timeout 20
 
 Корректировка этих параметров помогает избежать лишнего fencing и прерывания workloads в растянутых кластерах.
 
-Также обратите внимание на руководство по [общей настройке DRBD]({{% ref "/docs/v1.5/storage/drbd-tuning" %}}).
+Также обратите внимание на руководство по [общей настройке DRBD]({{% ref "https://cozystack.ru/docs/v1.5/storage/drbd-tuning" %}}).

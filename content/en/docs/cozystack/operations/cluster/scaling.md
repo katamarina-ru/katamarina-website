@@ -9,10 +9,10 @@ weight: 20
 
 Узел добавляется почти так же, как при обычной установке Cozystack.
 
-1.  [Установите Talos на узел]({{% ref "/docs/v1.5/install/talos" %}}), используя кастомный образ Talos для Cozystack.
+1.  [Установите Talos на узел]({{% ref "https://cozystack.ru/docs/v1.5/install/talos" %}}), используя кастомный образ Talos для Cozystack.
 
-1.  Сгенерируйте конфигурацию для нового узла по руководству [Talm]({{% ref "/docs/v1.5/install/kubernetes/talm#3-generate-node-configuration-files" %}})
-    или [talosctl]({{% ref "/docs/v1.5/install/kubernetes/talosctl#2-generate-node-configuration-files" %}}).
+1.  Сгенерируйте конфигурацию для нового узла по руководству [Talm]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talm#3-generate-node-configuration-files" %}})
+    или [talosctl]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talosctl#2-generate-node-configuration-files" %}}).
     
     Например, конфигурация узла control plane:
 
@@ -25,8 +25,8 @@ weight: 20
     talm template -e 192.168.123.20 -n 192.168.123.20 -t templates/worker.yaml -i > nodes/nodeN.yaml
     ```
 
-1.  Примените сгенерированную конфигурацию к узлу по руководству [Talm]({{% ref "/docs/v1.5/install/kubernetes/talm#41-apply-configuration-files" %}})
-    или [talosctl]({{% ref "/docs/v1.5/install/kubernetes/talosctl#3-apply-node-configuration" %}}).
+1.  Примените сгенерированную конфигурацию к узлу по руководству [Talm]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talm#41-apply-configuration-files" %}})
+    или [talosctl]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talosctl#3-apply-node-configuration" %}}).
     Например:
 
     ```bash

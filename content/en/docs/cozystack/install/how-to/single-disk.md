@@ -10,8 +10,8 @@ aliases:
 Стандартная конфигурация Talos предполагает, что у каждого узла есть основной и дополнительный диски, используемые соответственно для системного и пользовательского хранилища.
 Однако можно использовать один диск, выделив на нем место для пользовательского хранилища.
 
-Эту конфигурацию нужно применить при первом [`talosctl apply`]({{% ref "/docs/v1.5/install/kubernetes/talosctl#3-apply-node-configuration" %}})
-или [`talm apply`]({{% ref "/docs/v1.5/install/kubernetes/talm#3-apply-node-configuration" %}})
+Эту конфигурацию нужно применить при первом [`talosctl apply`]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talosctl#3-apply-node-configuration" %}})
+или [`talm apply`]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talm#3-apply-node-configuration" %}})
 — том, который выполняется с флагом `-i` (`--insecure`).
 Применение изменений после инициализации не даст эффекта.
 

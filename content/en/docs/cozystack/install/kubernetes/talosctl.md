@@ -263,4 +263,4 @@ kube-system       Active   7m56s
 
 Теперь у вас есть инициализированный кластер Kubernetes, готовый к установке Cozystack.
 Чтобы завершить установку, следуйте руководству по развертыванию, начиная с раздела
-[Установка Cozystack]({{% ref "/docs/v1.5/getting-started/install-cozystack" %}}).
+[Установка Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack" %}}).

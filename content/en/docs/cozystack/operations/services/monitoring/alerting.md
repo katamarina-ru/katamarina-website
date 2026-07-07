@@ -135,7 +135,7 @@ alerta:
         - warning
 ```
 
-Подробные параметры конфигурации см. в [справочнике Monitoring Hub]({{% ref "/docs/v1.5/operations/services/monitoring" %}}).
+Подробные параметры конфигурации см. в [справочнике Monitoring Hub]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/monitoring" %}}).
 
 ## Примеры alerts
 

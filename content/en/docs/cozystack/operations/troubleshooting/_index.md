@@ -149,18 +149,18 @@ cozystack.monitoring-application            default          False   One or more
 
 ### Bootstrap кластера
 
-См. [устранение неполадок установки Kubernetes]({{% ref "/docs/v1.5/install/kubernetes/troubleshooting" %}}).
+См. [устранение неполадок установки Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/troubleshooting" %}}).
 
 ### Обслуживание кластера
 
 #### Удаление отказавшего узла из кластера
 
-См. [Обслуживание кластера > Масштабирование кластера]({{% ref "/docs/v1.5/operations/cluster/scaling" %}}).
+См. [Обслуживание кластера > Масштабирование кластера]({{% ref "https://cozystack.ru/docs/v1.5/operations/cluster/scaling" %}}).
 
 ### Flux CD
 
-[Устранение неполадок Flux CD]({{% ref "/docs/v1.5/operations/troubleshooting/flux-cd" %}}).
+[Устранение неполадок Flux CD]({{% ref "https://cozystack.ru/docs/v1.5/operations/troubleshooting/flux-cd" %}}).
 
 ### Kube-OVN
 
-[Устранение неполадок Kube-OVN]({{% ref "/docs/v1.5/operations/troubleshooting/kube-ovn" %}}).
+[Устранение неполадок Kube-OVN]({{% ref "https://cozystack.ru/docs/v1.5/operations/troubleshooting/kube-ovn" %}}).

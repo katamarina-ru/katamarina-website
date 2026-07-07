@@ -261,5 +261,5 @@ kubectl get bucketaccessclass
 ## Связанная документация
 
 - [Buckets]({{% ref "buckets" %}}) -- создание buckets, использующих конкретный storage pool
-- [SeaweedFS Service Reference]({{% ref "/docs/v1.5/operations/services/seaweedfs" %}}) -- полный справочник параметров
-- [SeaweedFS Multi-DC Configuration]({{% ref "/docs/v1.5/operations/stretched/seaweedfs-multidc" %}}) -- руководство по multi-DC развертыванию
+- [SeaweedFS Service Reference]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/seaweedfs" %}}) -- полный справочник параметров
+- [SeaweedFS Multi-DC Configuration]({{% ref "https://cozystack.ru/docs/v1.5/operations/stretched/seaweedfs-multidc" %}}) -- руководство по multi-DC развертыванию

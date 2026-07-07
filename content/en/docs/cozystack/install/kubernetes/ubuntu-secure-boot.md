@@ -114,7 +114,7 @@ Both conditions met → `exit 0` → satellite Pod proceeds. No operator-side ch
 
 ## Alternatives
 
-- **Talos Linux** ([guide]({{% ref "/docs/v1.5/guides/talos" %}})) ships pre-signed DRBD modules in its system extensions and has none of these problems. Recommended for new deployments where you do not need a custom Linux distro.
+- **Talos Linux** ([guide]({{% ref "https://cozystack.ru/docs/v1.5/guides/talos" %}})) ships pre-signed DRBD modules in its system extensions and has none of these problems. Recommended for new deployments where you do not need a custom Linux distro.
 - **Disable Secure Boot** in the host's UEFI firmware. The default in-cluster compile path then works without modification. Operationally undesirable for fleets where Secure Boot is part of the security baseline, but a valid escape hatch.
 - **Build and sign drbd-dkms manually** against your own enterprise CA. This is what production environments with their own MOK / shim signing infrastructure already do; it is out of scope for this guide.
 

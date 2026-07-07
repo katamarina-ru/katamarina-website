@@ -130,7 +130,7 @@ talm apply -f nodes/node1.yaml
 talm bootstrap -f nodes/node1.yaml
 ```
 
-Подробнее см. в [руководстве по настройке Talm]({{% ref "/docs/v1.5/install/kubernetes/talm" %}}).
+Подробнее см. в [руководстве по настройке Talm]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talm" %}}).
 
 ### Использование talosctl
 
@@ -146,7 +146,7 @@ talosctl apply -f controlplane.yaml -n <ip> -e <ip> -i
 talosctl bootstrap -n <ip> -e <ip>
 ```
 
-Подробнее см. в [руководстве по настройке `talosctl`]({{% ref "/docs/v1.5/install/kubernetes/talosctl" %}}).
+Подробнее см. в [руководстве по настройке `talosctl`]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/talosctl" %}}).
 
 ## 5. Настройка mirror'ов Container Registry для Tenant Kubernetes
 

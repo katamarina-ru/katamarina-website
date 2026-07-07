@@ -12,7 +12,7 @@ aliases:
 
 В этом руководстве описано, как установить Talos в Oracle Cloud Infrastructure и развернуть кластер Kubernetes, готовый для Cozystack.
 После выполнения руководства можно перейти к
-[установке самого Cozystack]({{% ref "/docs/v1.5/getting-started/install-cozystack" %}}).
+[установке самого Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack" %}}).
 
 {{% alert color="info" %}}
 Это руководство создано для поддержки развертывания development-кластеров командой Cozystack.
@@ -46,7 +46,7 @@ aliases:
 ## 2. Создание инфраструктуры
 
 Цель этого шага — подготовить инфраструктуру согласно
-[требованиям к кластеру Cozystack]({{% ref "/docs/v1.5/install/hardware-requirements" %}}).
+[требованиям к кластеру Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/install/hardware-requirements" %}}).
 
 Это можно сделать вручную через Oracle Cloud dashboard или с помощью Terraform.
 
@@ -381,4 +381,4 @@ mv talm /usr/local/bin/talm
 
 Теперь у вас есть кластер Kubernetes, подготовленный к установке Cozystack.
 Чтобы завершить установку, следуйте руководству по развертыванию, начиная с раздела
-[Установка Cozystack]({{% ref "/docs/v1.5/getting-started/install-cozystack" %}}).
+[Установка Cozystack]({{% ref "https://cozystack.ru/docs/v1.5/getting-started/install-cozystack" %}}).

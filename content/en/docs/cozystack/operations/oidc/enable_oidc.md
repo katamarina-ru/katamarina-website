@@ -82,7 +82,7 @@ kubectl patch packages.cozystack.io cozystack.cozystack-platform --type=merge -p
 ```
 
 {{% alert color="info" %}}
-**Опционально**: если нужно, чтобы dashboard обращался к Keycloak через внутреннюю сеть кластера вместо external ingress, задайте `keycloakInternalUrl`. Это полезно в окружениях с self-signed certificates или ограниченным внешним доступом. Подробности см. в [Self-Signed Certificates]({{% ref "/docs/v1.5/operations/oidc/self-signed-certificates" %}}).
+**Опционально**: если нужно, чтобы dashboard обращался к Keycloak через внутреннюю сеть кластера вместо external ingress, задайте `keycloakInternalUrl`. Это полезно в окружениях с self-signed certificates или ограниченным внешним доступом. Подробности см. в [Self-Signed Certificates]({{% ref "https://cozystack.ru/docs/v1.5/operations/oidc/self-signed-certificates" %}}).
 {{% /alert %}}
 
 В течение минуты CozyStack выполнит reconcile и создаст три новых ресурса `HelmRelease`:

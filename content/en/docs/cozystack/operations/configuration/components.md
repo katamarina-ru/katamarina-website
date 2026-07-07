@@ -44,7 +44,7 @@ spec:
 Все platform packages находятся под префиксом `cozystack.`, например `cozystack.metallb`, `cozystack.hetzner-robotlb`, `cozystack.nfs-driver`.
 Перед редактированием Platform Package выполните `kubectl get package`, чтобы увидеть точные имена, доступные в вашем кластере.
 
-Например, при [установке Cozystack в Hetzner]({{% ref "/docs/v1.5/install/providers/hetzner" %}})
+Например, при [установке Cozystack в Hetzner]({{% ref "https://cozystack.ru/docs/v1.5/install/providers/hetzner" %}})
 нужно заменить load balancer по умолчанию, MetalLB, на RobotLB, специально сделанный для Hetzner:
 
 ```yaml

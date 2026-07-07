@@ -359,4 +359,4 @@ kubectl logs -n cozy-system deploy/cozystack-operator --previous
 
 Во время миграции некоторые HelmRelease могут временно показывать ошибки, пока operator выполняет reconcile.
 Подождите несколько минут и проверьте снова. Если проблемы сохраняются, обратитесь к
-[чеклисту диагностики]({{% ref "/docs/v1.5/operations/troubleshooting/#troubleshooting-checklist" %}}).
+[чеклисту диагностики]({{% ref "https://cozystack.ru/docs/v1.5/operations/troubleshooting/#troubleshooting-checklist" %}}).

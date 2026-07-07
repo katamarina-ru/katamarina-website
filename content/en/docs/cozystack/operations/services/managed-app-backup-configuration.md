@@ -5,12 +5,12 @@ description: "Настройка strategies и BackupClasses для logical data
 weight: 31
 ---
 
-Это руководство предназначено для **cluster administrators**, которые настраивают backup strategies для database applications, управляемых Cozystack: Postgres, MariaDB и ClickHouse. После настройки strategies и ресурсов `BackupClass` tenants запускают backups и restores, создавая ресурсы [BackupJob, Plan и RestoreJob]({{% ref "/docs/v1.5/applications/backup-and-recovery" %}}), без дополнительных действий администратора.
+Это руководство предназначено для **cluster administrators**, которые настраивают backup strategies для database applications, управляемых Cozystack: Postgres, MariaDB и ClickHouse. После настройки strategies и ресурсов `BackupClass` tenants запускают backups и restores, создавая ресурсы [BackupJob, Plan и RestoreJob]({{% ref "https://cozystack.ru/docs/v1.5/applications/backup-and-recovery" %}}), без дополнительных действий администратора.
 
 {{% alert color="info" %}}
 Эта страница описывает **data-only** backups, выполняемые нативным backup-механизмом каждого оператора (CloudNativePG barman, dumps mariadb-operator, Altinity `clickhouse-backup`). `apps.cozystack.io/*` CR, его `HelmRelease`, chart values и Secrets, управляемые оператором, **не попадают** в эти strategies.
 
-Для backups, которые объединяют Helm release + CRs + PVC snapshots (используются VMInstance / VMDisk), см. [Velero Backup Configuration]({{% ref "/docs/v1.5/operations/services/velero-backup-configuration" %}}).
+Для backups, которые объединяют Helm release + CRs + PVC snapshots (используются VMInstance / VMDisk), см. [Velero Backup Configuration]({{% ref "https://cozystack.ru/docs/v1.5/operations/services/velero-backup-configuration" %}}).
 {{% /alert %}}
 
 ## Предварительные требования
@@ -312,11 +312,11 @@ kubectl -n tenant-user create secret generic my-mariadb-mariadb-backup-creds \
 
 #### ClickHouse
 
-Для BackupClass flow дополнительный Secret не нужен. Altinity strategy напрямую читает S3 credentials из Secret `<release>-backup-s3`, созданного chart. Убедитесь, что `backup.enabled: true` задан на каждом экземпляре ClickHouse application, который tenant хочет backup-ить, и что блок `backup.*` в application values содержит координаты bucket (см. [справочник приложения ClickHouse]({{% ref "/docs/v1.5/applications/clickhouse" %}})).
+Для BackupClass flow дополнительный Secret не нужен. Altinity strategy напрямую читает S3 credentials из Secret `<release>-backup-s3`, созданного chart. Убедитесь, что `backup.enabled: true` задан на каждом экземпляре ClickHouse application, который tenant хочет backup-ить, и что блок `backup.*` в application values содержит координаты bucket (см. [справочник приложения ClickHouse]({{% ref "https://cozystack.ru/docs/v1.5/applications/clickhouse" %}})).
 
 ## Передача tenants
 
-Tenants запускают backups и restores по именам `BackupClass`, созданным выше, с помощью ресурсов `BackupJob`, `Plan` и `RestoreJob`. Дайте им руководство [Application Backup and Recovery]({{% ref "/docs/v1.5/applications/backup-and-recovery" %}}); для работы с существующим `BackupClass` им не нужны admin permissions. Перед тем как отправить их к руководству:
+Tenants запускают backups и restores по именам `BackupClass`, созданным выше, с помощью ресурсов `BackupJob`, `Plan` и `RestoreJob`. Дайте им руководство [Application Backup and Recovery]({{% ref "https://cozystack.ru/docs/v1.5/applications/backup-and-recovery" %}}); для работы с существующим `BackupClass` им не нужны admin permissions. Перед тем как отправить их к руководству:
 
 - Сообщите доступные имена `BackupClass` (tenants не могут вывести их список, потому что cluster-scoped resources недоступны через tenant `RoleBinding`).
 - Убедитесь, что для каждого managed application, который tenant хочет backup-ить, в его namespace уже существует per-application credential Secret, описанный в [Tenant onboarding](#tenant-onboarding).

@@ -226,6 +226,6 @@ keycloak:
 
 ## Миграция с v0
 
-В Cozystack v0 брендинг настраивался через отдельный ConfigMap `cozystack-branding` в namespace `cozy-system`. В v1 этот ConfigMap больше не используется. [Скрипт миграции]({{% ref "/docs/v1.5/operations/upgrades#step-3-generate-the-platform-package" %}}) автоматически преобразует старые значения ConfigMap в поле `branding` Platform Package.
+В Cozystack v0 брендинг настраивался через отдельный ConfigMap `cozystack-branding` в namespace `cozy-system`. В v1 этот ConfigMap больше не используется. [Скрипт миграции]({{% ref "https://cozystack.ru/docs/v1.5/operations/upgrades#step-3-generate-the-platform-package" %}}) автоматически преобразует старые значения ConfigMap в поле `branding` Platform Package.
 
 Если раньше вы использовали подход с ConfigMap, ручная миграция не нужна: процесс обновления выполнит ее автоматически.

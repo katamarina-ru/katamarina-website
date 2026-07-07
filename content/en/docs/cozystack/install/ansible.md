@@ -15,7 +15,7 @@ Ansible collection [`cozystack.installer`](https://github.com/cozystack/ansible-
 - Вы развертываете платформу на generic Linux (Ubuntu, Debian, RHEL, Rocky, openSUSE), а не на Talos Linux
 - Вы хотите управлять несколькими узлами через один inventory-файл
 
-Шаги ручной установки без Ansible см. в руководстве [Generic Kubernetes]({{% ref "/docs/v1.5/install/kubernetes/generic" %}}).
+Шаги ручной установки без Ansible см. в руководстве [Generic Kubernetes]({{% ref "https://cozystack.ru/docs/v1.5/install/kubernetes/generic" %}}).
 
 ## Предварительные требования
 
@@ -29,7 +29,7 @@ Ansible collection [`cozystack.installer`](https://github.com/cozystack/ansible-
 - **Операционная система**: Ubuntu/Debian, RHEL 8+/CentOS Stream 8+/Rocky/Alma или openSUSE/SLE
 - **Архитектура**: amd64 или arm64
 - **SSH-доступ** с passwordless sudo
-- Требования к CPU, RAM и дискам см. в [требованиях к оборудованию]({{% ref "/docs/v1.5/install/hardware-requirements" %}})
+- Требования к CPU, RAM и дискам см. в [требованиях к оборудованию]({{% ref "https://cozystack.ru/docs/v1.5/install/hardware-requirements" %}})
 
 ## Установка
 

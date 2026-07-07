@@ -153,7 +153,7 @@ params:
         desc: Chat with other project developers
       - name: Канал в Rutube
         url: https://rutube.ru/channel/69525943/
-        icon: fab fa-video-camera
+        icon: fa fa-video-camera
         desc: View Video
 
 

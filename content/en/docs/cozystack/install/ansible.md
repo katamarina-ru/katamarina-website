@@ -95,7 +95,7 @@ cluster:
 **Всегда явно закрепляйте `cozystack_chart_version`.** Collection поставляется с версией по умолчанию, которая может не совпадать с релизом, который вы хотите развернуть. Укажите ее в inventory, чтобы избежать неожиданных обновлений:
 
 ```yaml
-cozystack_chart_version: "{{< version-pin "cozystack_version" >}}"
+cozystack_chart_version: "1.5"
 ```
 
 Доступные версии см. в [релизах Cozystack](https://github.com/cozystack/cozystack/releases).
@@ -177,7 +177,7 @@ Playbook автоматически выполняет следующие шаг
 | Переменная | По умолчанию | Описание |
 | --- | --- | --- |
 | `cozystack_api_server_host` | *(обязательно)* | Внутренний IP узла control plane. |
-| `cozystack_chart_version` | `""` | Версия Helm chart Cozystack. **Закрепляйте явно.** |
+| `cozystack_chart_version` | `1.5` | Версия Helm chart Cozystack. **Закрепляйте явно.** |
 | `cozystack_platform_variant` | `isp-full-generic` | Platform variant: `default`, `isp-full`, `isp-hosted`, `isp-full-generic`. |
 | `cozystack_root_host` | `""` | Домен для сервисов Cozystack. Оставьте пустым, чтобы пропустить publishing configuration. |
 

@@ -143,7 +143,7 @@ params:
         desc: Get enterprise-grade support.
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
-      - name: Katamarina project on Git
+      - name: Проект Katamarina в Git
         url: https://sourcecraft.dev/katamarina
         icon: fab fa-git
         desc: Development takes place here!
@@ -151,6 +151,10 @@ params:
         url: https://t.me/katamarina_ru
         icon: fab fa-telegram
         desc: Chat with other project developers
+      - name: Канал в Rutube
+        url: https://rutube.ru/channel/69525943/
+        icon: fab fa-video
+        desc: View Video
 
 
 menus:

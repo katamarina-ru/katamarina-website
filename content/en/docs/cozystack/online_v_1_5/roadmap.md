@@ -1,3 +1,10 @@
+---
+title: "Cozystack Роадмап"
+linkTitle: "Cozystack Роадмап"
+description: "Cozystack Роадмап"
+weight: 3
+---
+
 # Cozystack Роадмап
 
 Вы можете ознакомиться с нашей дорожной картой по адресу: [Ссылка](https://github.com/orgs/cozystack/projects/1).

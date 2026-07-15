@@ -1,3 +1,10 @@
+---
+title: "Установка и настройка Cozystack"
+linkTitle: "Установка и настройка Cozystack"
+description: "Установка и настройка Cozystack"
+weight: 3
+---
+
 # 3. Установка и настройка Cozystack
 
 ## Цели

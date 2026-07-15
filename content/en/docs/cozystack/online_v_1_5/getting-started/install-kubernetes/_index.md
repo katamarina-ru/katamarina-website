@@ -1,3 +1,11 @@
+---
+title: "Установка и bootstrap кластера Kubernetes"
+linkTitle: "Установка и bootstrap кластера Kubernetes"
+description: "Установка и bootstrap кластера Kubernetes"
+weight: 2
+---
+
+
 # 2. Установка и bootstrap кластера Kubernetes
 
 ## Цели

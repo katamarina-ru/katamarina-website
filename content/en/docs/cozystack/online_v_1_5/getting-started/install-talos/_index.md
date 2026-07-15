@@ -1,3 +1,14 @@
+---
+title: "Установка Talos Linux"
+linkTitle: "Установка Talos Linux"
+description: "Установка Talos Linux"
+weight: 1
+---
+
+
+
+
+
 # 1. Установка Talos Linux
 
 ## Перед началом

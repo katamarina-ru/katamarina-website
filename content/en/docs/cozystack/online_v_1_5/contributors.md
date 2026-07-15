@@ -2,7 +2,7 @@
 title: "Контрибуторы"
 linkTitle: "Контрибуторы"
 description: "Контрибуторы"
-weight: 1
+weight: 10
 ---
 
 

@@ -4,8 +4,6 @@ slug: introducing-cozystack-wizard
 date: 2026-05-19
 author: "Timur Tukaev"
 description: "/cozystack:wizard — это новый управляемый установщик, который оркестрирует полное развёртывание Cozystack от начала до конца на Talos, Ubuntu и существующих кластерах — решает проблемы cert-SAN в облаках за NAT, подготовку ZFS, гонки при регистрации LINSTOR и многое другое."
-images:
-  - "cozystack-wizard.png"
 article_types:
   - announcement
 topics:

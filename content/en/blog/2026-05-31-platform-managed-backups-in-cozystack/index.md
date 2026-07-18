@@ -4,8 +4,6 @@ slug: platform-managed-backups-in-cozystack
 date: 2026-05-31
 author: "Timur Tukaev"
 description: "Cozystack предоставляет резервное копирование под управлением платформы: арендаторы объявляют, что защищать, платформа берёт на себя место хранения и способ. Разовые задания, планы по расписанию и восстановление на момент времени для Postgres, MariaDB, ClickHouse и виртуальных машин KubeVirt."
-images:
-  - "social-card.png"
 article_types:
   - how-to
 topics:

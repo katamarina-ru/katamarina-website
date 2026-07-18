@@ -4,8 +4,6 @@ slug: network-isolation-between-tenants-cilium-ebpf-kube-ovn-vpc
 date: 2026-07-14
 author: "Timur Tukaev"
 description: "Как Cozystack по умолчанию изолирует арендаторов на bare metal с помощью политик Cilium eBPF, а также опциональные Kube-OVN VPC для рабочих нагрузок, которым нужны выделенные подсети."
-images:
-  - "tenant-network-isolation.png"
 article_types:
   - tech-article
   - networking

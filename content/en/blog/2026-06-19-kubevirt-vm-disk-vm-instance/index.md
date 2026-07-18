@@ -4,8 +4,6 @@ slug: kubevirt-vm-disk-vm-instance
 date: 2026-06-19
 author: "Timur Tukaev"
 description: "KubeVirt делает запуск виртуальных машин в Kubernetes мощным, но сложным. Cozystack сводит VirtualMachine, DataVolume и PVC к двум чистым примитивам — VM Disk и VM Instance — с независимыми жизненными циклами для золотых образов, клонирования и быстрого выделения ресурсов."
-images:
-  - "social-card.png"
 article_types:
   - how-to
 topics:

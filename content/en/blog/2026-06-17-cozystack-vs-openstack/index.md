@@ -4,8 +4,6 @@ slug: cozystack-vs-openstack
 date: 2026-06-17
 author: "Timur Tukaev"
 description: "Честное практическое сравнение Cozystack и OpenStack по архитектуре, вычислениям, сетям, хранилищу, управляемым сервисам, эксплуатации и мультиарендности — и почему Kubernetes-нативная платформа является убедительной альтернативой OpenStack для построения частного облака."
-images:
-  - "social-card.png"
 article_types:
   - tech-article
 topics:

@@ -38,11 +38,11 @@
   }
 
   p {
-    color: $cozy-white;
+    color: #000000;
   }
 
   h1 {
-    color: rgba($cozy-white, 0.95);
+    color: #000000;
     font-size: 2.8em;
     padding-left: 14px;
     padding-top: 50px;
@@ -53,7 +53,7 @@
   }
 
   h2 {
-    color: rgba($cozy-white, 0.95);
+    color: #000000;
     font-weight: 600;
     font-size: 1.4em;
   }
@@ -72,7 +72,7 @@
 
   a.btn {
     @include flat-white-button;
-    border: none;
+    border: 1px;
     text-decoration: none;
 
     margin-top: 1.5rem;

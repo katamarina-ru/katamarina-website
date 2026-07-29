@@ -225,6 +225,11 @@ main.td-main {
   
 }
 
+.section-support {
+      .td-arrow-down::before {
+      display: none;
+    }
+}
 
 .section-community {
   @include gray-background-a;

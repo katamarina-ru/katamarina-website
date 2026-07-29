@@ -100,6 +100,7 @@
   }
 
   .td-arrow-down {
+    display: none;
     &::before {
       border: {
         color: #{$cozy-gray} transparent transparent transparent;

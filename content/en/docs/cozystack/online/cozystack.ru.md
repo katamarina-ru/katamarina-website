@@ -1,7 +1,7 @@
 ---
-title: "Online-документация Katamarina Cozystack"
-linkTitle: "Online-документация Katamarina Cozystack"
-description: "Online-документация Katamarina Cozystack"
+title: "Документация Katamarina на cozystack.ru"
+linkTitle: "Документация Katamarina на cozystack.ru"
+description: "Документация Katamarina на cozystack.ru"
 ---
 
 ### Команда Katamarina обеспечивает работу сайта https://cozystack.ru и разработку русскоязычной версии документации

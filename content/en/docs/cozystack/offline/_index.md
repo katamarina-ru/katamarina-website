@@ -1,6 +1,6 @@
 ---
-title: "Offline-документация Katamarina Cozystack"
-linkTitle: "Offline-документация Katamarina Cozystack"
-description: "Offline-документация Katamarina Cozystack"
+title: "Offline-документация"
+linkTitle: "Offline-документация"
+description: "Offline-документация"
 weight: 120
 ---

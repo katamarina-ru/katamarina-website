@@ -6,6 +6,8 @@ description: "Документация Katamarina на cozystack.ru"
 
 ### Команда Katamarina обеспечивает работу сайта https://cozystack.ru и разработку русскоязычной версии документации
 
+Разработка ведется в рамках репозиториев https://github.com/katamarina-ru/cozystack-website и https://sourcecraft.dev/katamarina/katamarina-website
+
 ## Для использования online-документации - перейдите по соответствующим ссылкам:
 
 

@@ -14,7 +14,7 @@ weight: 50
 ### Интеграторы
 | Организация | Контакт | Описание |
 | ------------ | ------- | ---- | ------------------ |
-| <img src="https://novell-cis.ru/images/tild3832-6163-4631-b236-376535323536__frame_82.png" alt="Novell CIS" width="200"/> | [Сайт](https://novell-cis.ru/) | Базовая ОС, совместимая с Katamarina |
+| <img src="https://novell-cis.ru/images/tild3832-6163-4631-b236-376535323536__frame_82.png" alt="Novell CIS" width="200"/> | [Сайт](https://novell-cis.ru/) | Проектирование, внедрение и сопровождение Katamarina |
 
 
 ### Облачные провайдеры

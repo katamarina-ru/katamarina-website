@@ -159,9 +159,12 @@ params:
 
 menus:
   main:
-  - name: Git
+  - name: Репозиторий
     url: https://sourcecraft.dev/katamarina
     weight: 10
+  - name: Партнеры
+    url: /partners
+    weight: 5
     
 services:
   googleAnalytics:

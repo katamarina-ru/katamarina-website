@@ -1,4 +1,16 @@
-Katamarina Cozystack v1.7.0 доступен!
+---
+title: "Релиз Katamarina Cozystack v1.7.0 доступен."
+slug: release17
+date: 2026-11-05
+author: "Katamarina"
+description: "Релиз Katamarina Cozystack v1.7.0 доступен"
+article_types:
+  - tech-article
+topics:
+  - platform
+---
+
+Katamarina Cozystack v1.7.0 доступен.
 
 🚀 Появилась поддержка Proxmox VE для размещения рабочих узлов тенантных Kubernetes-кластеров.
 
